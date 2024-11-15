@@ -4,10 +4,10 @@ export const Count = () => {
   const { value, increaseValue, decreaseValue } = useCount();
 
   return (
-    <div>
+    <span>
       <button onClick={decreaseValue}>-</button>
       <span>{value}</span>
       <button onClick={increaseValue}>+</button>
-    </div>
+    </span>
   );
 };
