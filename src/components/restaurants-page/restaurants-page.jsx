@@ -24,13 +24,11 @@ export const RestaurantsPage = () => {
       </section>
       <section>
         {available && <RestaurantsCard restaurant={available} />}
-        <ReviewForm />
         {available && <RestaurantsCard restaurant={available} />}
-        <ReviewForm />
         {available && <RestaurantsCard restaurant={available} />}
-        <ReviewForm />
         {available && <RestaurantsCard restaurant={available} />}
-        <ReviewForm />
+        {available && <RestaurantsCard restaurant={available} />}
+        {available && <RestaurantsCard restaurant={available} />}
         {available && <RestaurantsCard restaurant={available} />}
         <ReviewForm />
       </section>
