@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
 
 export const ProgressBar = () => {
-  const scrollHeight = Math.max(
-    document.body.scrollHeight,
-    document.documentElement.scrollHeight,
-    document.body.offsetHeight,
-    document.documentElement.offsetHeight,
-    document.body.clientHeight,
-    document.documentElement.clientHeight
-  );
-  const maxScroll = scrollHeight - document.documentElement.clientHeight;
-  let percentBar = (window.scrollY * 100) / maxScroll + "%";
-
-  const [barWidth, setBarWidth] = useState(percentBar);
+  function scrollOccupancy() {
+    const scrollHeight = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.offsetHeight,
+      document.body.clientHeight,
+      document.documentElement.clientHeight
+    );
+    const maxScroll = scrollHeight - document.documentElement.clientHeight;
+    return (window.scrollY * 100) / maxScroll + "%";
+  }
+  const [barWidth, setBarWidth] = useState(0);
 
   const scrollCallback = () => {
-    percentBar = (window.scrollY * 100) / maxScroll + "%";
-    setBarWidth(percentBar);
+    setBarWidth(scrollOccupancy());
   };
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export const ProgressBar = () => {
     return () => {
       window.removeEventListener("scroll", scrollCallback);
     };
-  });
+  }, []);
 
   return (
     <section
