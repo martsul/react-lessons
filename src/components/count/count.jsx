@@ -1,13 +1,13 @@
-import { useCount } from "./use-count";
-
-export const Count = () => {
-  const { value, increaseValue, decreaseValue } = useCount();
-
+export const Count = ({ value, increaseValue, decreaseValue }) => {
   return (
     <span>
-      <button onClick={decreaseValue}>-</button>
+      <button type="button" onClick={decreaseValue}>
+        -
+      </button>
       <span>{value}</span>
-      <button onClick={increaseValue}>+</button>
+      <button type="button" onClick={increaseValue}>
+        +
+      </button>
     </span>
   );
 };

@@ -1,4 +1,4 @@
-import { Count } from "../count/count";
+import { MenuListItem } from "../menu-list-item/menu-list-item";
 
 export const RestaurantsMenu = ({ menu }) => {
   return (
@@ -6,11 +6,7 @@ export const RestaurantsMenu = ({ menu }) => {
       <h3>Меню</h3>
       <ul>
         {menu.map((dish) => (
-          <li key={dish.id}>
-            <span>{dish.name}</span>
-            <br />
-            <Count />
-          </li>
+          <MenuListItem dish={dish} key={dish.id} />
         ))}
       </ul>
     </div>
