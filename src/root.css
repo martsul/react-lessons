@@ -1,0 +1,15 @@
+:root {
+  --grey: linear-gradient(90deg, #494544 0%, #504B4A 100%);
+  --border-grey: #FFFFFF1A;
+  --border-gradient: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 100%);
+  --text-grey: #A6A7AB;
+  --green: #72A479;
+  --border-green: #618967;
+  --font: Gilroy, sans-serif;
+  --wide-container: 1271px;
+  --small-container: 1096px;
+}
+
+body {
+  background: linear-gradient(360deg, #211F20 0%, #44403F 100%);
+}

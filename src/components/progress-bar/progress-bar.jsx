@@ -1,4 +1,6 @@
+import classNames from "classnames";
 import { useEffect, useState } from "react";
+import styles from "./progress-bar.module.css"
 
 function scrollOccupancy() {
   const scrollHeight = Math.max(
@@ -16,11 +18,11 @@ function scrollOccupancy() {
 export const ProgressBar = () => {
   const [barWidth, setBarWidth] = useState(0);
 
-  const scrollCallback = () => {
-    setBarWidth(scrollOccupancy());
-  };
-
   useEffect(() => {
+    const scrollCallback = () => {
+      setBarWidth(scrollOccupancy());
+    };
+
     window.addEventListener("scroll", scrollCallback);
 
     return () => {
@@ -29,16 +31,6 @@ export const ProgressBar = () => {
   }, []);
 
   return (
-    <section
-      style={{
-        position: "fixed",
-        top: "0",
-        left: "0",
-        width: "100%",
-        height: "15px",
-      }}
-    >
-      <div style={{ background: "red", height: "100%", width: barWidth }}></div>
-    </section>
+    <section className={classNames(styles["progress-bar"])} style={{width: barWidth}}></section>
   );
 };

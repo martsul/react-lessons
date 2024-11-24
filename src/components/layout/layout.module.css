@@ -1,0 +1,30 @@
+.header, .footer {
+  padding: 24px 0;
+}
+
+.header {
+  background: var(--grey);
+  box-shadow: 0px 30px 60px 0px #221F2033;
+  border-bottom: 1px solid var(--border-grey);
+}
+
+.container-header {
+  max-width: var(--wide-container);
+  margin: 0 auto;
+}
+
+.company-name {
+  font: 700 25px/1 var(--font);
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  color: #fff;
+}
+
+.container-footer {
+  max-width: var(--small-container);
+  margin: 0 auto;
+}
+
+.footer {
+  background: linear-gradient(270.7deg, #44403F 0.4%, #211F20 100%);
+}

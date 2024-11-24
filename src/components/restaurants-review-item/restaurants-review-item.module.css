@@ -1,0 +1,43 @@
+.title {
+  text-transform: uppercase;
+  color: #fff;
+  font: 700 32px/1.2 var(--font);
+  margin-bottom: 40px;
+  padding-left: 20px;
+  border-left: 3px solid var(--border-green);
+}
+
+.list {
+  margin-bottom: 70px;
+  background: var(--border-gradient), var(--grey);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.item {
+  background: var(--grey);
+  padding: 20px 40px 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.name {
+  font: 700 18px/1.2 var(--font);
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.review {
+  font: 400 16px/1.2 var(--font);
+  color: #fff;
+  font-style: italic;
+}
+
+.score {
+  color: #fff;
+  font: 700 32px/1.2 var(--font);
+}

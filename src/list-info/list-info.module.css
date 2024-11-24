@@ -1,0 +1,16 @@
+.title {
+  text-transform: uppercase;
+  color: #fff;
+  font: 700 32px/1.2 var(--font);
+  margin-bottom: 40px;
+}
+
+.list {
+  background: var(--border-gradient), var(--grey);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 70px;
+}
