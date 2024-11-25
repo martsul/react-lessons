@@ -1,7 +1,6 @@
 import { Count } from "../count/count";
 import { useForm } from "./use-form";
 import styles from "./reviewForm.module.css";
-import classNames from "classnames";
 
 export const ReviewForm = () => {
   const {
@@ -15,36 +14,36 @@ export const ReviewForm = () => {
   const { name, text, score } = formParams;
 
   return (
-    <form className={classNames(styles["form"])}>
-      <h3 className={classNames(styles["title"])}>Оставить отзыв</h3>
-      <div className={classNames(styles["block"])}>
-        <label className={classNames(styles["label"])}>
-          <span className={classNames(styles["name"])}>
-            Name<span className={classNames(styles["star"])}>*</span>
+    <form className={styles.form}>
+      <h3 className={styles.title}>Оставить отзыв</h3>
+      <div className={styles.block}>
+        <label className={styles.label}>
+          <span className={styles.name}>
+            Name<span className={styles.star}>*</span>
           </span>
           <input
             type="text"
             value={name}
             onInput={(event) => setName(event.target.value)}
-            className={classNames(styles["input"])}
+            className={styles.input}
             placeholder="Antony"
           />
         </label>
-        <label className={classNames(styles["label"])}>
-          <span className={classNames(styles["name"])}>
-            Text<span className={classNames(styles["star"])}>*</span>
+        <label className={styles.label}>
+          <span className={styles.name}>
+            Text<span className={styles.star}>*</span>
           </span>
           <input
             type="text"
             value={text}
             onInput={(event) => setText(event.target.value)}
-            className={classNames(styles["input"])}
+            className={styles.input}
             placeholder="Review"
           />
         </label>
-        <div className={classNames(styles["label"])}>
-          <span className={classNames(styles["name"])}>
-            Rating<span className={classNames(styles["star"])}>*</span>
+        <div className={styles.label}>
+          <span className={styles.name}>
+            Rating<span className={styles.star}>*</span>
           </span>
           <Count
             value={score}
@@ -52,11 +51,7 @@ export const ReviewForm = () => {
             decreaseValue={decreaseValue}
           />
         </div>
-        <button
-          type="button"
-          onClick={clearInputs}
-          className={classNames(styles["clear"])}
-        >
+        <button type="button" onClick={clearInputs} className={styles.clear}>
           clear
         </button>
       </div>

@@ -1,10 +1,9 @@
-import classNames from "classnames";
 import styles from "./count.module.css"
 
 export const Count = ({ value, increaseValue, decreaseValue }) => {
   return (
-    <div className={classNames(styles["block"])}>
-      <button className={classNames(styles["button"])} type="button" onClick={decreaseValue}>
+    <div className={styles.block}>
+      <button className={styles.button} type="button" onClick={decreaseValue}>
         <svg
           width="12"
           height="4"
@@ -18,8 +17,8 @@ export const Count = ({ value, increaseValue, decreaseValue }) => {
           />
         </svg>
       </button>
-      <span className={classNames(styles["num"])}>{value}</span>
-      <button className={classNames(styles["button"])} type="button" onClick={increaseValue}>
+      <span className={styles.num}>{value}</span>
+      <button className={styles.button} type="button" onClick={increaseValue}>
         <svg
           width="12"
           height="12"

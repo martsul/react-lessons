@@ -1,17 +1,16 @@
-import classNames from "classnames";
 import styles from "./restaurants-review-item.module.css";
 
 export const RestaurantsReviewItem = ({ element }) => {
   return (
     <>
-      <li className={classNames(styles["item"])}>
+      <li className={styles.item}>
         <div>
-          <h4 className={classNames(styles["name"])}>{element.user}</h4>
+          <h4 className={styles.name}>{element.user}</h4>
           <span
-            className={classNames(styles["review"])}
+            className={styles.review}
           >{`"${element.text}"`}</span>
         </div>
-        <span className={classNames(styles["score"])}>{element.rating}</span>
+        <span className={styles.score}>{element.rating}</span>
       </li>
     </>
   );

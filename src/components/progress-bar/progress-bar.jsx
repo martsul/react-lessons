@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import { useEffect, useState } from "react";
 import styles from "./progress-bar.module.css"
 
@@ -31,6 +30,6 @@ export const ProgressBar = () => {
   }, []);
 
   return (
-    <section className={classNames(styles["progress-bar"])} style={{width: barWidth}}></section>
+    <section className={styles.progressBar} style={{width: barWidth}}></section>
   );
 };
