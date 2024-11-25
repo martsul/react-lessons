@@ -10,7 +10,7 @@ export const Filters = ({ filters, clickFunc, selectedRestaurant }) => {
               checked={filter.id === selectedRestaurant}
               className={styles.radio}
               name="filter"
-              onClick={clickFunc}
+              onChange={clickFunc}
               type="radio"
               id={filter.id}
             />
