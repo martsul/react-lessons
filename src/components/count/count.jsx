@@ -1,13 +1,16 @@
+import { CountSvg } from "./count-svg";
+import styles from "./count.module.css";
+
 export const Count = ({ value, increaseValue, decreaseValue }) => {
   return (
-    <span>
-      <button type="button" onClick={decreaseValue}>
-        -
+    <div className={styles.block}>
+      <button className={styles.button} type="button" onClick={decreaseValue}>
+        <CountSvg id={"minus"} />
       </button>
-      <span>{value}</span>
-      <button type="button" onClick={increaseValue}>
-        +
+      <span className={styles.num}>{value}</span>
+      <button className={styles.button} type="button" onClick={increaseValue}>
+        <CountSvg id={"plus"} />
       </button>
-    </span>
+    </div>
   );
 };

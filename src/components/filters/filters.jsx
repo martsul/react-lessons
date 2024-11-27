@@ -1,7 +1,23 @@
-export const Filters = ({ filters, clickFunc }) => {
-  return filters.map((filter) => (
-    <button onClick={clickFunc} id={filter.id} key={filter.id}>
-      {filter.name}
-    </button>
-  ));
+import styles from "./filters.module.css";
+
+export const Filters = ({ filters, clickFunc, selectedRestaurant }) => {
+  return (
+    <section className={styles.section}>
+      <div className={styles.container}>
+        {filters.map((filter) => (
+          <label key={filter.id}>
+            <input
+              checked={filter.id === selectedRestaurant}
+              className={styles.radio}
+              name="filter"
+              onChange={clickFunc}
+              type="radio"
+              id={filter.id}
+            />
+            <span className={styles.filter}>{filter.name}</span>
+          </label>
+        ))}
+      </div>
+    </section>
+  );
 };

@@ -1,9 +1,23 @@
+import styles from "./layout.module.css";
+
 export const Layout = ({ children }) => {
   return (
     <>
-      <header style={{ marginTop: "15px" }}>Header</header>
+      <header className={styles.header}>
+        <div className={styles.containerHeader}>
+          <a href="#" className={styles.companyName}>
+            food delivery
+          </a>
+        </div>
+      </header>
       {children}
-      <footer>Footer</footer>
+      <footer className={styles.footer}>
+        <div className={styles.containerFooter}>
+          <a href="#" className={styles.companyName}>
+            food delivery
+          </a>
+        </div>
+      </footer>
     </>
   );
 };

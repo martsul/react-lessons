@@ -1,29 +1,24 @@
-import { useState } from "react";
 import { Count } from "../count/count";
+import styles from "./menu-list-item.module.css";
+import { useCounter } from "./use-cost";
 
-export const MenuListItem = ({ dish }) => {
-  const [quantity, setQuantity] = useState(0);
-
-  const increaseValue = () => {
-    if (quantity + 1 <= 5) {
-      setQuantity(quantity + 1);
-    }
-  };
-  const decreaseValue = () => {
-    if (quantity - 1 >= 0) {
-      setQuantity(quantity - 1);
-    }
-  };
+export const MenuListItem = ({ element, cost }) => {
+  const { quantity, increaseValue, decreaseValue } = useCounter();
 
   return (
-    <li>
-      <span>{dish.name}</span>
-      <br />
-      <Count
-        value={quantity}
-        increaseValue={increaseValue}
-        decreaseValue={decreaseValue}
-      />
+    <li className={styles.item}>
+      <div>
+        <h4 className={styles.name}>{element.name}</h4>
+        <p className={styles.ingredients}>{element.ingredients.join(", ")}</p>
+      </div>
+      <div className={styles.count}>
+        <span className={styles.price}>{quantity * cost} $</span>
+        <Count
+          value={quantity}
+          increaseValue={increaseValue}
+          decreaseValue={decreaseValue}
+        />
+      </div>
     </li>
   );
 };

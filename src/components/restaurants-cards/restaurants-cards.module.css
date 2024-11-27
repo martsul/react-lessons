@@ -1,0 +1,8 @@
+.name {
+  text-transform: uppercase;
+  color: #fff;
+  padding-left: 20px;
+  font: 700 38px/1.2 var(--font);
+  border-left: 3px solid var(--border-green);
+  margin-bottom: 40px;
+}
