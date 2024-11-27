@@ -6,3 +6,8 @@
   border-left: 3px solid var(--border-green);
   margin-bottom: 40px;
 }
+
+.name.light {
+  color: var(--l-black);
+  border-left: 3px solid var(--l-orange-hov);
+}

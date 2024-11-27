@@ -3,6 +3,10 @@
   margin-bottom: 35px;
 }
 
+.section.light {
+  border-bottom: 1px solid var(--l-border);
+}
+
 .container {
   max-width: var(--wide-container);
   margin: 0 auto;
@@ -24,10 +28,14 @@
   cursor: pointer;
 }
 
-.filter:hover {
+.light .filter {
+  color: var(--l-black);
+}
+
+.filter:hover, .radio:checked+.filter {
   border-bottom: 3px solid var(--green);
 }
 
-.radio:checked+.filter {
-  border-bottom: 3px solid var(--green);
+.light .filter:hover, .light .radio:checked+.filter {
+  border-bottom: 3px solid var(--l-orange);
 }

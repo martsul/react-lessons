@@ -1,8 +1,16 @@
 import styles from "./filters.module.css";
+import { useTheme } from "../theme-context/use-theme";
+import classNames from "classnames";
 
 export const Filters = ({ filters, clickFunc, selectedRestaurant }) => {
+  const { theme } = useTheme();
+
   return (
-    <section className={styles.section}>
+    <section
+      className={classNames(styles.section, {
+        [styles.light]: theme,
+      })}
+    >
       <div className={styles.container}>
         {filters.map((filter) => (
           <label key={filter.id}>

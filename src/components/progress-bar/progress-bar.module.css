@@ -5,3 +5,7 @@
   height: 5px;
   background: var(--green);
 }
+
+.progressBar.light {
+  background: var(--l-orange);
+}

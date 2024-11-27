@@ -8,8 +8,8 @@
   --font: Gilroy, sans-serif;
   --wide-container: 1271px;
   --small-container: 1096px;
-}
-
-body {
-  background: linear-gradient(360deg, #211F20 0%, #44403F 100%);
+  --l-orange: #FF7A50;
+  --l-orange-hov: #f97148;
+  --l-border: #D7D7D7;
+  --l-black: #363853;
 }

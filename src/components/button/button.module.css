@@ -1,0 +1,19 @@
+.button {
+  background: var(--green);
+  border-radius: 10px;
+  font: 700 14px/1 var(--font);
+  color: #fff;
+  padding: 17px 50px;
+}
+
+.button:hover {
+  background: var(--border-green);
+}
+
+button.light {
+  background: var(--l-orange);
+}
+
+button.light:hover {
+  background: var(--l-orange-hov);
+}

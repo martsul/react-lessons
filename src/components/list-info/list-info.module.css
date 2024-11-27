@@ -5,6 +5,10 @@
   margin-bottom: 40px;
 }
 
+.title.light {
+  color: var(--l-black);
+}
+
 .list {
   background: var(--border-gradient), var(--grey);
   display: flex;
@@ -13,4 +17,8 @@
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 70px;
+}
+
+.list.light {
+  background: transparent;
 }

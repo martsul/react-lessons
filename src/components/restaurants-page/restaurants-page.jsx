@@ -5,8 +5,11 @@ import { RestaurantsCard } from "../restaurants-cards/restaurants-cards";
 import { ReviewForm } from "../review-form/reviewForm";
 import { ProgressBar } from "../progress-bar/progress-bar";
 import styles from "./restaurants-page.module.css";
+import { useSign } from "../sign-context/use-sign";
 
 export const RestaurantsPage = () => {
+  const { signIn } = useSign();
+
   const [available, setAvailable] = useState(restaurants[0]);
 
   const clickFunc = (event) => {
@@ -28,9 +31,7 @@ export const RestaurantsPage = () => {
       <section>
         <div className={styles.container}>
           {available && <RestaurantsCard restaurant={available} />}
-          {available && <RestaurantsCard restaurant={available} />}
-          {available && <RestaurantsCard restaurant={available} />}
-          <ReviewForm />
+          {signIn && <ReviewForm />}
         </div>
       </section>
     </main>

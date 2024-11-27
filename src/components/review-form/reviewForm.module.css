@@ -12,9 +12,17 @@
   margin-bottom: 90px;
 }
 
+.form.light {
+  background: #fff;
+}
+
 .title {
   font: 700 17px/1.2 var(--font);
   color: #fff;
+}
+
+.light .title {
+  color: var(--l-black);
 }
 
 .block {
@@ -36,8 +44,16 @@
   color: #fff;
 }
 
+.light .name {
+  color: var(--l-black);
+}
+
 .star {
   color: var(--green);
+}
+
+.light .star {
+  color: var(--l-orange);
 }
 
 .input {
@@ -48,6 +64,11 @@
   width: 100%;
   font: 400 16px/1 var(--font);
   color: #fff;
+}
+
+.light .input {
+  border: 1px solid var(--l-border);
+  color: var(--l-black);
 }
 
 .clear {

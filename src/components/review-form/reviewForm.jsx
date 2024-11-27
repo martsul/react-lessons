@@ -1,6 +1,9 @@
 import { Count } from "../count/count";
 import { useForm } from "./use-form";
 import styles from "./reviewForm.module.css";
+import { Button } from "../button/button";
+import { useTheme } from "../theme-context/use-theme";
+import classNames from "classnames";
 
 export const ReviewForm = () => {
   const {
@@ -12,9 +15,10 @@ export const ReviewForm = () => {
     decreaseValue,
   } = useForm();
   const { name, text, score } = formParams;
+  const { theme } = useTheme();
 
   return (
-    <form className={styles.form}>
+    <form className={classNames(styles.form, { [styles.light]: theme })}>
       <h3 className={styles.title}>Оставить отзыв</h3>
       <div className={styles.block}>
         <label className={styles.label}>
@@ -51,9 +55,7 @@ export const ReviewForm = () => {
             decreaseValue={decreaseValue}
           />
         </div>
-        <button type="button" onClick={clearInputs} className={styles.clear}>
-          clear
-        </button>
+        <Button type={"button"} clickFunction={clearInputs} content={"Clear"} />
       </div>
     </form>
   );
