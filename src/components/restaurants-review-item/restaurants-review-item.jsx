@@ -3,11 +3,11 @@ import { useTheme } from "../theme-context/use-theme";
 import classNames from "classnames";
 
 export const RestaurantsReviewItem = ({ element }) => {
-  const { theme } = useTheme();
+  const { isLightTheme } = useTheme();
 
   return (
     <>
-      <li className={classNames(styles.item, { [styles.light]: theme })}>
+      <li className={classNames(styles.item, { [styles.light]: isLightTheme })}>
         <div>
           <h4 className={styles.name}>{element.user}</h4>
           <span className={styles.review}>{`"${element.text}"`}</span>

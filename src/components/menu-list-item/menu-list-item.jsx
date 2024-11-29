@@ -8,12 +8,12 @@ import { useTheme } from "../theme-context/use-theme";
 export const MenuListItem = ({ element, cost }) => {
   const { signIn } = useSign();
   const { quantity, increaseValue, decreaseValue } = useCounter();
-  const { theme } = useTheme();
+  const { isLightTheme } = useTheme();
 
   return (
     <li
       className={classNames(styles.item, {
-        [styles.light]: theme,
+        [styles.light]: isLightTheme,
       })}
     >
       <div>

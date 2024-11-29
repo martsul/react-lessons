@@ -3,12 +3,12 @@ import { useTheme } from "../theme-context/use-theme";
 import classNames from "classnames";
 
 export const Filters = ({ filters, clickFunc, selectedRestaurant }) => {
-  const { theme } = useTheme();
+  const { isLightTheme } = useTheme();
 
   return (
     <section
       className={classNames(styles.section, {
-        [styles.light]: theme,
+        [styles.light]: isLightTheme,
       })}
     >
       <div className={styles.container}>

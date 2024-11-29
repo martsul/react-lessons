@@ -3,11 +3,11 @@ import { useTheme } from "../theme-context/use-theme";
 import styles from "./button.module.css";
 
 export const Button = ({ type, content, clickFunction }) => {
-  const { theme } = useTheme();
+  const { isLightTheme } = useTheme();
 
   return (
     <button
-      className={classNames(styles.button, { [styles.light]: theme })}
+      className={classNames(styles.button, { [styles.light]: isLightTheme })}
       onClick={clickFunction}
       type={type}
     >

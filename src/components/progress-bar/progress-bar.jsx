@@ -18,7 +18,7 @@ function scrollOccupancy() {
 
 export const ProgressBar = () => {
   const [barWidth, setBarWidth] = useState(0);
-  const { theme } = useTheme();
+  const { isLightTheme } = useTheme();
 
   useEffect(() => {
     const scrollCallback = () => {
@@ -35,7 +35,7 @@ export const ProgressBar = () => {
   return (
     <section
       className={classNames(styles.progressBar, {
-        [styles.light]: theme,
+        [styles.light]: isLightTheme,
       })}
       style={{ width: barWidth }}
     ></section>

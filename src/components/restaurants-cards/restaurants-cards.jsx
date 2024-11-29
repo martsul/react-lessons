@@ -7,13 +7,13 @@ import { useTheme } from "../theme-context/use-theme";
 
 export const RestaurantsCard = ({ restaurant }) => {
   const { name, menu, reviews } = restaurant;
-  const { theme } = useTheme();
+  const { isLightTheme } = useTheme();
 
   return (
     <div>
       <h2
         className={classNames(styles.name, {
-          [styles.light]: theme,
+          [styles.light]: isLightTheme,
         })}
       >
         {name}

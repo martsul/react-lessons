@@ -1,18 +1,16 @@
 import classNames from "classnames";
-import { Button } from "../button/button";
-import { useSign } from "../sign-context/use-sign";
 import { useTheme } from "../theme-context/use-theme";
-import { HeaderSvg } from "./header-svg";
+import { SignIn } from "../sign-in/sign-in";
 import styles from "./header.module.css";
+import { SwitchTheme } from "../switch-theme/switch-theme";
 
 export const Header = () => {
-  const { clickCallback, name, signIn } = useSign();
-  const { theme, changeTheme } = useTheme();
+  const { isLightTheme } = useTheme();
 
   return (
     <header
       className={classNames(styles.header, {
-        [styles.light]: theme,
+        [styles.light]: isLightTheme,
       })}
     >
       <div className={styles.container}>
@@ -20,22 +18,8 @@ export const Header = () => {
           food delivery
         </a>
         <div className={styles.interaction}>
-          <div className={styles.sign}>
-            {signIn && (
-              <div className={styles.user}>
-                <p className={styles.name}>{name}</p>
-                <HeaderSvg id={"person"} />
-              </div>
-            )}
-            <Button
-              clickFunction={clickCallback}
-              type={"button"}
-              content={signIn ? "Sign out" : "Sign in"}
-            />
-          </div>
-          <button onClick={changeTheme} type="button">
-            <HeaderSvg id={theme ? "sun" : "night"} />
-          </button>
+          <SignIn />
+          <SwitchTheme />
         </div>
       </div>
     </header>

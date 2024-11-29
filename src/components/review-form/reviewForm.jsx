@@ -15,10 +15,10 @@ export const ReviewForm = () => {
     decreaseValue,
   } = useForm();
   const { name, text, score } = formParams;
-  const { theme } = useTheme();
+  const { isLightTheme } = useTheme();
 
   return (
-    <form className={classNames(styles.form, { [styles.light]: theme })}>
+    <form className={classNames(styles.form, { [styles.light]: isLightTheme })}>
       <h3 className={styles.title}>Оставить отзыв</h3>
       <div className={styles.block}>
         <label className={styles.label}>

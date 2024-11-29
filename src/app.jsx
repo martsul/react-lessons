@@ -4,13 +4,16 @@ import "./reset.css";
 import "./fonts.css";
 import "./root.css";
 import { ThemeContextProvider } from "./components/theme-context/theme-context";
+import { SignContextProvider } from "./components/sign-context/sign-context";
 
 export const App = () => {
   return (
     <ThemeContextProvider>
-      <Layout>
-        <RestaurantsPage />
-      </Layout>
+      <SignContextProvider>
+        <Layout>
+          <RestaurantsPage />
+        </Layout>
+      </SignContextProvider>
     </ThemeContextProvider>
   );
 };
