@@ -1,0 +1,42 @@
+.header {
+  background: var(--grey);
+  box-shadow: 0px 30px 60px 0px #221F2033;
+  border-bottom: 1px solid var(--border-grey);
+  padding: 24px 0;
+}
+
+.header.light {
+  background: transparent;
+  box-shadow: none;
+  border-bottom: 1px solid var(--l-border);
+}
+
+.container {
+  max-width: var(--wide-container);
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.interaction {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.companyName {
+  font: 700 25px/1 var(--font);
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  color: #fff;
+}
+
+.light .companyName {
+  color: var(--l-orange);
+}
+
+.icon {
+  fill: #e8eaed;
+}

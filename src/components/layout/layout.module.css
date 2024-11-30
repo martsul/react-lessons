@@ -1,16 +1,14 @@
-.header, .footer {
+.window {
+  background: linear-gradient(360deg, #211F20 0%, #44403F 100%);
+}
+
+.window.light {
+  background: linear-gradient(113.59deg, rgba(89, 88, 88, 0) -2.01%, rgba(82, 81, 81, 0.2) 103.74%);
+
+}
+
+.footer {
   padding: 24px 0;
-}
-
-.header {
-  background: var(--grey);
-  box-shadow: 0px 30px 60px 0px #221F2033;
-  border-bottom: 1px solid var(--border-grey);
-}
-
-.containerHeader {
-  max-width: var(--wide-container);
-  margin: 0 auto;
 }
 
 .companyName {
@@ -20,6 +18,10 @@
   color: #fff;
 }
 
+.light .companyName {
+  color: var(--l-black);
+}
+
 .containerFooter {
   max-width: var(--small-container);
   margin: 0 auto;
@@ -27,4 +29,9 @@
 
 .footer {
   background: linear-gradient(270.7deg, #44403F 0.4%, #211F20 100%);
+}
+
+.light .footer {
+  background: transparent;
+  border-top: 1px solid var(--l-border);
 }
