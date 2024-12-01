@@ -1,12 +1,11 @@
 import styles from "./restaurants-cards.module.css";
-import { ListInfo } from "../list-info/list-info";
-import { MenuListItem } from "../menu-list-item/menu-list-item";
-import { RestaurantsReviewItem } from "../restaurants-review-item/restaurants-review-item";
+// import { ListInfo } from "../list-info/list-info";
+// import { MenuListItem } from "../menu-list-item/menu-list-item";
+// import { RestaurantsReviewItem } from "../restaurants-review-item/restaurants-review-item";
 import classNames from "classnames";
 import { useTheme } from "../theme-context/use-theme";
 
-export const RestaurantsCard = ({ restaurant }) => {
-  const { name, menu, reviews } = restaurant;
+export const RestaurantsCard = ({ name, menu, reviews }) => {
   const { isLightTheme } = useTheme();
 
   return (
@@ -18,7 +17,7 @@ export const RestaurantsCard = ({ restaurant }) => {
       >
         {name}
       </h2>
-      {Boolean(menu.length) && (
+      {/* {Boolean(menu.length) && (
         <ListInfo title="menu" items={menu} Element={MenuListItem} />
       )}
       {Boolean(reviews.length) && (
@@ -27,7 +26,7 @@ export const RestaurantsCard = ({ restaurant }) => {
           items={reviews}
           Element={RestaurantsReviewItem}
         />
-      )}
+      )} */}
     </div>
   );
 };

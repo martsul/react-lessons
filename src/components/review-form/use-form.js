@@ -39,29 +39,25 @@ export const useForm = () => {
   const [formParams, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUES);
 
   const setName = (name) => {
-    dispatch({ type: "SET_NAME", payload: name });
+    dispatch({ type: SET_NAME_ACTION, payload: name });
   };
   const setText = (text) => {
-    dispatch({ type: "SET_TEXT", payload: text });
-  };
-  const setScore = (score) => {
-    dispatch({ type: "SET_SCORE", payload: score });
+    dispatch({ type: SET_TEXT_ACTION, payload: text });
   };
   const clearInputs = () => {
-    dispatch({ type: "CLEAR_INPUTS" });
+    dispatch({ type: CLEAR_INPUTS_ACTION });
   };
   const increaseValue = () => {
-    dispatch({ type: "INCREASE_SCORE" });
+    dispatch({ type: INCREASE_SCORE_ACTION });
   };
   const decreaseValue = () => {
-    dispatch({ type: "DECREASE_SCORE" });
+    dispatch({ type: DECREASE_SCORE_ACTION });
   };
 
   return {
     formParams,
     setName,
     setText,
-    setScore,
     clearInputs,
     increaseValue,
     decreaseValue,
