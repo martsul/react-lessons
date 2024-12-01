@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { RestaurantsCard } from "../restaurants-cards/restaurants-cards";
 import { ReviewForm } from "../review-form/reviewForm";
 import { ProgressBar } from "../progress-bar/progress-bar";
 import styles from "./restaurants-page.module.css";
@@ -7,11 +6,16 @@ import { useSign } from "../sign-context/use-sign";
 import { useSelector } from "react-redux";
 import { selectRestaurantsIds } from "../../redux/entities/restaurants/restaurants-slice";
 import { FilterContainer } from "../filters/filter-container";
+import classNames from "classnames";
+import { useTheme } from "../theme-context/use-theme";
+import { RestaurantsCardsContainer } from "../restaurants-cards/restaurants-cards-container";
 
 export const RestaurantsPage = () => {
-  const restaurantsIds = useSelector(selectRestaurantsIds);
+  const { isLightTheme } = useTheme();
 
   const { signIn } = useSign();
+
+  const restaurantsIds = useSelector(selectRestaurantsIds);
 
   const [availableRestaurant, setAvailableRestaurant] = useState(
     restaurantsIds[0]
@@ -19,24 +23,18 @@ export const RestaurantsPage = () => {
 
   const clickFunc = (event) => {
     const tempAvailableRestaurant = restaurantsIds.find(
-      (restaurant) => {
-        // console.log(restaurant);
-        console.log(restaurant);
-        
-        
-
-        return restaurant == event.target.id
-      }
+      (restaurant) => restaurant == event.target.id
     );
-
     setAvailableRestaurant(tempAvailableRestaurant);
   };
 
   return (
     <main>
       <ProgressBar />
-      <section className={styles.section}>
-        <div className={styles.container}>
+      <section
+        className={classNames(styles.filters, { [styles.light]: isLightTheme })}
+      >
+        <div className={styles.filtersContainer}>
           {restaurantsIds.map((id) => (
             <FilterContainer
               key={id}
@@ -50,7 +48,7 @@ export const RestaurantsPage = () => {
       <section>
         <div className={styles.container}>
           {availableRestaurant && (
-            <RestaurantsCard id={availableRestaurant} />
+            <RestaurantsCardsContainer id={availableRestaurant} />
           )}
           {signIn && <ReviewForm />}
         </div>

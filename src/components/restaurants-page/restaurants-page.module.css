@@ -2,3 +2,20 @@
   margin: 0 auto;
   max-width: var(--small-container);
 }
+
+.filters {
+  border-bottom: 1px solid var(--border-grey);
+  margin-bottom: 35px;
+}
+
+.light.filters {
+  border-bottom: 1px solid var(--l-border);
+}
+
+.filtersContainer {
+  max-width: var(--wide-container);
+  margin: 0 auto;
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+}

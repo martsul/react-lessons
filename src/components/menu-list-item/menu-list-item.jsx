@@ -5,9 +5,11 @@ import styles from "./menu-list-item.module.css";
 import { useCounter } from "./use-cost";
 import { useTheme } from "../theme-context/use-theme";
 
-export const MenuListItem = ({ element, cost }) => {
+export const MenuListItem = ({ name, price, ingredients }) => {
   const { signIn } = useSign();
+
   const { quantity, increaseValue, decreaseValue } = useCounter();
+
   const { isLightTheme } = useTheme();
 
   return (
@@ -17,12 +19,12 @@ export const MenuListItem = ({ element, cost }) => {
       })}
     >
       <div>
-        <h4 className={styles.name}>{element.name}</h4>
-        <p className={styles.ingredients}>{element.ingredients.join(", ")}</p>
+        <h4 className={styles.name}>{name}</h4>
+        <p className={styles.ingredients}>{ingredients.join(", ")}</p>
       </div>
       <div className={styles.count}>
         <span className={styles.price}>
-          {signIn ? quantity * cost : cost} $
+          {signIn ? quantity * price : price} $
         </span>
         {signIn && (
           <Count
