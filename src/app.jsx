@@ -5,15 +5,19 @@ import "./fonts.css";
 import "./root.css";
 import { ThemeContextProvider } from "./components/theme-context/theme-context";
 import { SignContextProvider } from "./components/sign-context/sign-context";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 export const App = () => {
   return (
-    <ThemeContextProvider>
-      <SignContextProvider>
-        <Layout>
-          <RestaurantsPage />
-        </Layout>
-      </SignContextProvider>
-    </ThemeContextProvider>
+    <Provider store={store}>
+      <ThemeContextProvider>
+        <SignContextProvider>
+          <Layout>
+            <RestaurantsPage />
+          </Layout>
+        </SignContextProvider>
+      </ThemeContextProvider>
+    </Provider>
   );
 };

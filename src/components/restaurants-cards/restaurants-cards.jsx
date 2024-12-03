@@ -1,12 +1,11 @@
 import styles from "./restaurants-cards.module.css";
 import { ListInfo } from "../list-info/list-info";
-import { MenuListItem } from "../menu-list-item/menu-list-item";
-import { RestaurantsReviewItem } from "../restaurants-review-item/restaurants-review-item";
 import classNames from "classnames";
 import { useTheme } from "../theme-context/use-theme";
+import { MenuListContainer } from "../menu-list-item/menu-list-container";
+import { RestaurantsReviewContainer } from "../restaurants-review-item/restaurants-review-container";
 
-export const RestaurantsCard = ({ restaurant }) => {
-  const { name, menu, reviews } = restaurant;
+export const RestaurantsCard = ({ name, menu, reviews }) => {
   const { isLightTheme } = useTheme();
 
   return (
@@ -19,13 +18,13 @@ export const RestaurantsCard = ({ restaurant }) => {
         {name}
       </h2>
       {Boolean(menu.length) && (
-        <ListInfo title="menu" items={menu} Element={MenuListItem} />
+        <ListInfo title="menu" ids={menu} Element={MenuListContainer} />
       )}
       {Boolean(reviews.length) && (
         <ListInfo
           title="reviews"
-          items={reviews}
-          Element={RestaurantsReviewItem}
+          ids={reviews}
+          Element={RestaurantsReviewContainer}
         />
       )}
     </div>

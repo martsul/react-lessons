@@ -2,7 +2,7 @@ import styles from "./list-info.module.css";
 import { useTheme } from "../theme-context/use-theme";
 import classNames from "classnames";
 
-export const ListInfo = ({ title, items, Element }) => {
+export const ListInfo = ({ title, ids, Element }) => {
   const { isLightTheme } = useTheme();
 
   return (
@@ -19,8 +19,8 @@ export const ListInfo = ({ title, items, Element }) => {
           [styles.light]: isLightTheme,
         })}
       >
-        {items.map((item) => (
-          <Element cost={item.price} element={item} key={item.id} />
+        {ids.map((id) => (
+          <Element id={id} key={id} />
         ))}
       </ul>
     </>
