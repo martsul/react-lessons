@@ -1,8 +1,13 @@
-import styles from "./filters.module.css";
+import styles from "./restaurants-filters.module.css";
 import { useTheme } from "../theme-context/use-theme";
 import classNames from "classnames";
 
-export const Filters = ({ clickFunc, selectedRestaurant, id, name }) => {
+export const RestaurantsFilters = ({
+  clickFunc,
+  selectedRestaurant,
+  id,
+  name,
+}) => {
   const { isLightTheme } = useTheme();
 
   return (

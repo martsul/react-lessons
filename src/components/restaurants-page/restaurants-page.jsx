@@ -5,10 +5,10 @@ import styles from "./restaurants-page.module.css";
 import { useSign } from "../sign-context/use-sign";
 import { useSelector } from "react-redux";
 import { selectRestaurantsIds } from "../../redux/entities/restaurants/restaurants-slice";
-import { FilterContainer } from "../filters/filter-container";
 import classNames from "classnames";
 import { useTheme } from "../theme-context/use-theme";
 import { RestaurantsCardsContainer } from "../restaurants-cards/restaurants-cards-container";
+import { RestaurantsFiltersContainer } from "../restaurants-filters/restaurants-filters-container";
 
 export const RestaurantsPage = () => {
   const { isLightTheme } = useTheme();
@@ -36,7 +36,7 @@ export const RestaurantsPage = () => {
       >
         <div className={styles.filtersContainer}>
           {restaurantsIds.map((id) => (
-            <FilterContainer
+            <RestaurantsFiltersContainer
               key={id}
               id={id}
               selectedRestaurant={availableRestaurant}
