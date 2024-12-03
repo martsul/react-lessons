@@ -1,26 +1,22 @@
 import styles from "./restaurants-filters.module.css";
 import { useTheme } from "../theme-context/use-theme";
 import classNames from "classnames";
+import { NavLink, useParams } from "react-router-dom";
 
-export const RestaurantsFilters = ({
-  clickFunc,
-  selectedRestaurant,
-  id,
-  name,
-}) => {
+export const RestaurantsFilters = ({ id, name }) => {
   const { isLightTheme } = useTheme();
+  const { restaurantId } = useParams();
+  const isActive = restaurantId == id;
 
   return (
-    <label className={classNames({ [styles.light]: isLightTheme })}>
-      <input
-        checked={id === selectedRestaurant}
-        className={styles.radio}
-        name="filter"
-        onChange={clickFunc}
-        type="radio"
-        id={id}
-      />
-      <span className={styles.filter}>{name}</span>
-    </label>
+    <NavLink
+      className={classNames(styles.filter, {
+        [styles.light]: isLightTheme,
+        [styles.active]: isActive,
+      })}
+      to={`${id}/menu`}
+    >
+      {name}
+    </NavLink>
   );
 };

@@ -1,14 +1,19 @@
 .window {
   background: linear-gradient(360deg, #211F20 0%, #44403F 100%);
+  min-height: 100vh;
+  padding-bottom: 73px;
+  position: relative;
 }
 
 .window.light {
   background: linear-gradient(113.59deg, rgba(89, 88, 88, 0) -2.01%, rgba(82, 81, 81, 0.2) 103.74%);
-
 }
 
 .footer {
   padding: 24px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .companyName {

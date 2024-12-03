@@ -13,6 +13,7 @@ const INCREASE_SCORE_ACTION = "INCREASE_SCORE";
 const DECREASE_SCORE_ACTION = "DECREASE_SCORE";
 
 const reducer = (state, { type, payload }) => {
+  
   switch (type) {
     case SET_NAME_ACTION:
       return { ...state, name: payload };
