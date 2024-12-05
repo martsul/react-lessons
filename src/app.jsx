@@ -1,5 +1,5 @@
 import { Layout } from "./components/layout/layout";
-import { RestaurantsPage } from "./components/restaurants-page/restaurants-page";
+import { PreviewRestaurantsPage } from "./pages/preview-restaurants-page/preview-restaurants-page";
 import "./reset.css";
 import "./fonts.css";
 import "./root.css";
@@ -8,53 +8,51 @@ import { SignContextProvider } from "./components/sign-context/sign-context";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Restaurant } from "./components/restaurant/restaurant";
-import { HomePage } from "./components/home-page/home-page";
-import { MenuContainer } from "./components/menu/menu-container";
-import { ReviewsContainer } from "./components/reviews/reviews-container";
-import { DishContainer } from "./components/dish/dish-container";
+import { RestaurantPage } from "./pages/restaurant-page/restaurant-page";
+import { HomePage } from "./pages/home-page/home-page";
+import { MenuContainer } from "./pages/menu/menu-container";
+import { ReviewsContainer } from "./pages/reviews/reviews-container";
+import { DishContainer } from "./pages/dish/dish-container";
 
 export const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: (
-        <Layout>
-          <HomePage />
-        </Layout>
-      ),
-    },
-    {
-      path: "restaurant",
-      element: (
-        <Layout>
-          <RestaurantsPage />
-        </Layout>
-      ),
+      element: <Layout />,
       children: [
         {
-          path: ":restaurantId",
-          element: <Restaurant />,
+          index: true,
+          element: <HomePage />,
+        },
+        {
+          path: "restaurants",
+          element: <PreviewRestaurantsPage />,
           children: [
             {
-              path: "menu",
-              element: <MenuContainer />,
-            },
-            {
-              path: "reviews",
-              element: <ReviewsContainer />,
+              path: ":restaurantId",
+              element: <RestaurantPage />,
+              children: [
+                {
+                  index: true,
+                  element: <MenuContainer />,
+                },
+                {
+                  path: "menu",
+                  element: <MenuContainer />,
+                },
+                {
+                  path: "reviews",
+                  element: <ReviewsContainer />,
+                },
+              ],
             },
           ],
         },
+        {
+          path: "dish/:menuId",
+          element: <DishContainer />,
+        },
       ],
-    },
-    {
-      path: "dish/:menuId",
-      element: (
-        <Layout>
-          <DishContainer />
-        </Layout>
-      ),
     },
   ]);
 

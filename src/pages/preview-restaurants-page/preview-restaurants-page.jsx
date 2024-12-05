@@ -2,11 +2,11 @@ import styles from "./restaurants-page.module.css";
 import { useSelector } from "react-redux";
 import { selectRestaurantsIds } from "../../redux/entities/restaurants/restaurants-slice";
 import classNames from "classnames";
-import { useTheme } from "../theme-context/use-theme";
-import { RestaurantsFiltersContainer } from "../restaurants-filters/restaurants-filters-container";
+import { useTheme } from "../../components/theme-context/use-theme";
+import { RestaurantsFiltersContainer } from "../../components/restaurants-filters/restaurants-filters-container";
 import { Outlet } from "react-router-dom";
 
-export const RestaurantsPage = () => {
+export const PreviewRestaurantsPage = () => {
   const { isLightTheme } = useTheme();
 
   const restaurantsIds = useSelector(selectRestaurantsIds);

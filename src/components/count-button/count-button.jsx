@@ -1,8 +1,8 @@
 import classNames from "classnames";
 import { useTheme } from "../theme-context/use-theme";
-import styles from "./count-btn.module.css";
+import styles from "./count-button.module.css";
 
-export const CountBtn = ({ clickFunc, Content }) => {
+export const CountButton = ({ clickFunc, Content }) => {
   const { isLightTheme } = useTheme();
 
   return (

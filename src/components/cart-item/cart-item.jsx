@@ -3,7 +3,7 @@ import { useTheme } from "../theme-context/use-theme";
 import styles from "./cart-item.module.css";
 import { useSign } from "../sign-context/use-sign";
 import { Count } from "../count/count";
-import { CountBtn } from "../count-btn/count-btn";
+import { CountButton } from "../count-button/count-button";
 import { CrossSvg } from "../svg/cross-svg";
 
 export const CartItem = ({ params, functions }) => {
@@ -26,7 +26,7 @@ export const CartItem = ({ params, functions }) => {
       <div className={styles.interaction}>
         <div className={styles.count}>
           <span className={styles.price}>
-            {signIn ? (quantity || 1) * price : price} $
+            {(quantity || 1) * price} $
           </span>
           {signIn && (
             <Count
@@ -36,7 +36,7 @@ export const CartItem = ({ params, functions }) => {
             />
           )}
         </div>
-        <CountBtn clickFunc={deleteItem} Content={CrossSvg} />
+        <CountButton clickFunc={deleteItem} Content={CrossSvg} />
       </div>
     </li>
   );

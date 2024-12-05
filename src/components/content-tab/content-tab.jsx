@@ -12,7 +12,7 @@ export const ContentTab = () => {
       className={classNames(styles.container, { [styles.light]: isLightTheme })}
     >
       <NavLink
-        to={`/restaurant/${restaurantId}/menu`}
+        to={`/restaurants/${restaurantId}/menu`}
         className={({ isActive }) =>
           classNames(styles.link, {
             [styles.active]: isActive,
@@ -22,7 +22,7 @@ export const ContentTab = () => {
         Menu
       </NavLink>
       <NavLink
-        to={`/restaurant/${restaurantId}/reviews`}
+        to={`/restaurants/${restaurantId}/reviews`}
         className={({ isActive }) =>
           classNames(styles.link, {
             [styles.active]: isActive,

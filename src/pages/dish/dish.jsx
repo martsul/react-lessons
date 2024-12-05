@@ -1,8 +1,8 @@
 import classNames from "classnames";
-import { Count } from "../count/count";
-import { useSign } from "../sign-context/use-sign";
+import { Count } from "../../components/count/count";
+import { useSign } from "../../components/sign-context/use-sign";
 import styles from "./dish.module.css";
-import { useTheme } from "../theme-context/use-theme";
+import { useTheme } from "../../components/theme-context/use-theme";
 
 export const Dish = ({ params, increaseValue, decreaseValue }) => {
   const { signIn } = useSign();

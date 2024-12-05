@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./home-page.module.css";
 import image from "../../img/scooter-guy.png";
 import classNames from "classnames";
-import { useTheme } from "../theme-context/use-theme";
+import { useTheme } from "../../components/theme-context/use-theme";
 
 export const HomePage = () => {
   const { isLightTheme } = useTheme();
@@ -19,7 +19,7 @@ export const HomePage = () => {
               We provide super fast-delivery service. Let’s use our services
               right now and get discounts of up to 50%
             </p>
-            <Link to={"/restaurant"} className={styles.link}>
+            <Link to={"/restaurants"} className={styles.link}>
               Explore Food
             </Link>
           </div>
