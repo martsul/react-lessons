@@ -4,7 +4,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
 }
 
 .item.light {
@@ -27,12 +26,6 @@
   color: var(--text-grey);
 }
 
-.count {
-  display: flex;
-  gap: 200px;
-  align-items: center;
-}
-
 .price {
   font: 700 20px/1.2 var(--font);
   color: #fff;
@@ -43,3 +36,14 @@
   color: var(--l-black);
 }
 
+.count {
+  display: flex;
+  gap: 200px;
+  align-items: center;
+}
+
+.interaction {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}

@@ -1,32 +1,29 @@
 import styles from "./restaurants-cards.module.css";
-import { ListInfo } from "../list-info/list-info";
 import classNames from "classnames";
 import { useTheme } from "../theme-context/use-theme";
-import { MenuListContainer } from "../menu-list-item/menu-list-container";
-import { RestaurantsReviewContainer } from "../restaurants-review-item/restaurants-review-container";
+import { ReviewForm } from "../review-form/reviewForm";
+import { useSign } from "../sign-context/use-sign";
+import { Outlet } from "react-router-dom";
+import { ContentTab } from "../content-tab/content-tab";
 
-export const RestaurantsCard = ({ name, menu, reviews }) => {
+export const RestaurantsCard = ({ name }) => {
   const { isLightTheme } = useTheme();
+  const { signIn } = useSign();
 
   return (
-    <div>
-      <h2
-        className={classNames(styles.name, {
-          [styles.light]: isLightTheme,
-        })}
-      >
-        {name}
-      </h2>
-      {Boolean(menu.length) && (
-        <ListInfo title="menu" ids={menu} Element={MenuListContainer} />
-      )}
-      {Boolean(reviews.length) && (
-        <ListInfo
-          title="reviews"
-          ids={reviews}
-          Element={RestaurantsReviewContainer}
-        />
-      )}
-    </div>
+    <>
+      <div>
+        <h2
+          className={classNames(styles.name, {
+            [styles.light]: isLightTheme,
+          })}
+        >
+          {name}
+        </h2>
+        <ContentTab />
+        <Outlet />
+      </div>
+      {signIn && <ReviewForm />}
+    </>
   );
 };

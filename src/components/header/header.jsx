@@ -3,6 +3,7 @@ import { useTheme } from "../theme-context/use-theme";
 import { SignIn } from "../sign-in/sign-in";
 import styles from "./header.module.css";
 import { SwitchTheme } from "../switch-theme/switch-theme";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   const { isLightTheme } = useTheme();
@@ -14,9 +15,9 @@ export const Header = () => {
       })}
     >
       <div className={styles.container}>
-        <a href="#" className={styles.companyName}>
+        <Link to={"/"} className={styles.companyName}>
           food delivery
-        </a>
+        </Link>
         <div className={styles.interaction}>
           <SignIn />
           <SwitchTheme />

@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+.link {
+  color: #fff;
+  font: 700 18px/1.2 var(--font);
+}
+
+.link:hover, .link.active {
+  color: var(--green);
+}
+
+.light .link {
+  color: var(--l-black);
+}
+
+.light .link:hover, .light .link.active {
+  color: var(--l-orange);
+}

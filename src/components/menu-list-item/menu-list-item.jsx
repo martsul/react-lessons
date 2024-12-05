@@ -2,15 +2,14 @@ import classNames from "classnames";
 import { Count } from "../count/count";
 import { useSign } from "../sign-context/use-sign";
 import styles from "./menu-list-item.module.css";
-import { useCounter } from "./use-cost";
 import { useTheme } from "../theme-context/use-theme";
+import { Link } from "react-router-dom";
 
-export const MenuListItem = ({ name, price, ingredients }) => {
+export const MenuListItem = ({ params, id, increaseValue, decreaseValue }) => {
   const { signIn } = useSign();
-
-  const { quantity, increaseValue, decreaseValue } = useCounter();
-
   const { isLightTheme } = useTheme();
+
+  const { name, price, ingredients, quantity } = params;
 
   return (
     <li
@@ -18,13 +17,13 @@ export const MenuListItem = ({ name, price, ingredients }) => {
         [styles.light]: isLightTheme,
       })}
     >
-      <div>
+      <Link to={`/dish/${id}`}>
         <h4 className={styles.name}>{name}</h4>
         <p className={styles.ingredients}>{ingredients.join(", ")}</p>
-      </div>
+      </Link>
       <div className={styles.count}>
         <span className={styles.price}>
-          {signIn ? quantity * price : price} $
+          {signIn ? (quantity || 1) * price : price} $
         </span>
         {signIn && (
           <Count

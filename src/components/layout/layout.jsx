@@ -2,14 +2,25 @@ import classNames from "classnames";
 import { Header } from "../header/header";
 import { useTheme } from "../theme-context/use-theme";
 import styles from "./layout.module.css";
+import { Cart } from "../cart/cart";
+import { useSign } from "../sign-context/use-sign";
+import { ProgressBar } from "../progress-bar/progress-bar";
+import { Outlet } from "react-router-dom";
 
-export const Layout = ({ children }) => {
+export const Layout = () => {
   const { isLightTheme } = useTheme();
+  const { signIn } = useSign();
 
   return (
-    <div className={classNames(styles.window, { [styles.light]: isLightTheme })}>
+    <div
+      className={classNames(styles.window, { [styles.light]: isLightTheme })}
+    >
       <Header />
-      {children}
+      <main>
+        <ProgressBar />
+        <Outlet />
+        {signIn && <Cart />}
+      </main>
       <footer className={styles.footer}>
         <div className={styles.containerFooter}>
           <a href="#" className={styles.companyName}>

@@ -9,7 +9,7 @@ export const RestaurantsCardsContainer = ({ id }) => {
     return;
   }
 
-  const { name, menu, reviews } = restaurant;
+  const { name } = restaurant;
 
-  return <RestaurantsCard name={name} menu={menu} reviews={reviews}/>
+  return <RestaurantsCard name={name} />;
 };
