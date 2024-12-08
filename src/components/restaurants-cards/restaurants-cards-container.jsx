@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { selectRestaurantById } from "../../redux/entities/restaurants/restaurants-slice";
 import { RestaurantsCard } from "./restaurants-cards";
 
-export const RestaurantsCardsContainer = ({ id }) => {
+export const RestaurantsCardsContainer = ({ id, children }) => {
   const restaurant = useSelector((state) => selectRestaurantById(state, id));
 
   if (!restaurant) {
@@ -11,5 +11,5 @@ export const RestaurantsCardsContainer = ({ id }) => {
 
   const { name } = restaurant;
 
-  return <RestaurantsCard name={name} />;
+  return <RestaurantsCard name={name}>{children}</RestaurantsCard>;
 };

@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../../redux/entities/restaurants/restaurants-slice";
+import { selectRestaurantsIds } from "../../redux/entities/restaurants/restaurants-slice";
 import { RestaurantsFilters } from "./restaurants-filters";
 
-export const RestaurantsFiltersContainer = ({ id }) => {
-  const filter = useSelector((state) => selectRestaurantById(state, id));
+export const RestaurantsFiltersContainer = () => {
+  const ids = useSelector(selectRestaurantsIds);
 
-  if (!filter) {
+  if (!ids) {
     return;
   }
 
-  return <RestaurantsFilters id={id} name={filter.name} />;
+  return ids.map((id) => <RestaurantsFilters id={id} key={id} />);
 };
