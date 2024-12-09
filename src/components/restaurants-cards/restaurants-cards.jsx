@@ -3,10 +3,9 @@ import classNames from "classnames";
 import { useTheme } from "../theme-context/use-theme";
 import { ReviewForm } from "../review-form/reviewForm";
 import { useSign } from "../sign-context/use-sign";
-import { Outlet } from "react-router-dom";
 import { ContentTab } from "../content-tab/content-tab";
 
-export const RestaurantsCard = ({ name }) => {
+export const RestaurantsCard = ({ name, children }) => {
   const { isLightTheme } = useTheme();
   const { signIn } = useSign();
 
@@ -21,7 +20,7 @@ export const RestaurantsCard = ({ name }) => {
           {name}
         </h2>
         <ContentTab />
-        <Outlet />
+        {children}
       </div>
       {signIn && <ReviewForm />}
     </>

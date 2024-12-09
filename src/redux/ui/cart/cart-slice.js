@@ -14,7 +14,7 @@ export const cartSlice = createSlice({
     decreaseItemsInCart: (state, { payload }) => {
       if (!state[payload]) {
         return;
-      } else if (state[payload] == 1) {
+      } else if (state[payload] <= 1) {
         delete state[payload];
         return;
       }
