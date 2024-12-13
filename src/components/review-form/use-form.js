@@ -1,36 +1,34 @@
 import { useReducer } from "react";
 
 const DEFAULT_FORM_VALUES = {
-  name: "",
   text: "",
-  score: 0,
+  rating: 0,
 };
 
-const SET_NAME_ACTION = "SET_NAME";
 const SET_TEXT_ACTION = "SET_TEXT";
 const CLEAR_INPUTS_ACTION = "CLEAR_INPUTS";
-const INCREASE_SCORE_ACTION = "INCREASE_SCORE";
-const DECREASE_SCORE_ACTION = "DECREASE_SCORE";
+const INCREASE_RATING_ACTION = "INCREASE_RATING";
+const DECREASE_RATING_ACTION = "DECREASE_RATING";
+const SET_RATING_ACTION = "SET_RATING";
 
 const reducer = (state, { type, payload }) => {
-  
   switch (type) {
-    case SET_NAME_ACTION:
-      return { ...state, name: payload };
     case SET_TEXT_ACTION:
       return { ...state, text: payload };
     case CLEAR_INPUTS_ACTION:
       return { ...DEFAULT_FORM_VALUES };
-    case INCREASE_SCORE_ACTION:
-      if (state.score + 1 <= 5) {
-        return { ...state, score: state.score + 1 };
+    case INCREASE_RATING_ACTION:
+      if (state.rating + 1 <= 5) {
+        return { ...state, rating: state.rating + 1 };
       }
       return state;
-    case DECREASE_SCORE_ACTION:
-      if (state.score - 1 >= 0) {
-        return { ...state, score: state.score - 1 };
+    case DECREASE_RATING_ACTION:
+      if (state.rating - 1 >= 0) {
+        return { ...state, rating: state.rating - 1 };
       }
       return state;
+    case SET_RATING_ACTION:
+      return { ...state, rating: payload };
     default:
       return state;
   }
@@ -39,9 +37,6 @@ const reducer = (state, { type, payload }) => {
 export const useForm = () => {
   const [formParams, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUES);
 
-  const setName = (name) => {
-    dispatch({ type: SET_NAME_ACTION, payload: name });
-  };
   const setText = (text) => {
     dispatch({ type: SET_TEXT_ACTION, payload: text });
   };
@@ -49,18 +44,21 @@ export const useForm = () => {
     dispatch({ type: CLEAR_INPUTS_ACTION });
   };
   const increaseValue = () => {
-    dispatch({ type: INCREASE_SCORE_ACTION });
+    dispatch({ type: INCREASE_RATING_ACTION });
   };
   const decreaseValue = () => {
-    dispatch({ type: DECREASE_SCORE_ACTION });
+    dispatch({ type: DECREASE_RATING_ACTION });
+  };
+  const setRating = (rating) => {
+    dispatch({ type: SET_RATING_ACTION, payload: rating });
   };
 
   return {
     formParams,
-    setName,
     setText,
     clearInputs,
     increaseValue,
     decreaseValue,
+    setRating,
   };
 };

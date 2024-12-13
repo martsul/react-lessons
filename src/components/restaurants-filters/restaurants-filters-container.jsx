@@ -1,13 +1,22 @@
-import { useSelector } from "react-redux";
-import { selectRestaurantsIds } from "../../redux/entities/restaurants/restaurants-slice";
 import { RestaurantsFilters } from "./restaurants-filters";
+import { useGetRestaurantsQuery } from "../../redux/services/api";
 
 export const RestaurantsFiltersContainer = () => {
-  const ids = useSelector(selectRestaurantsIds);
+  const { data, isError, isLoading } = useGetRestaurantsQuery();
 
-  if (!ids) {
+  if (isError) {
+    return "Error";
+  }
+
+  if (isLoading) {
+    return "Loading";
+  }
+
+  if (!data) {
     return;
   }
 
-  return ids.map((id) => <RestaurantsFilters id={id} key={id} />);
+  return data.map((parameters) => (
+    <RestaurantsFilters key={parameters.id} parameters={parameters} />
+  ));
 };

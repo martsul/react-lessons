@@ -1,22 +1,22 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { selectUsersIds } from "./users-slice";
+// import { createAsyncThunk } from "@reduxjs/toolkit";
+// import { selectUsersIds } from "./users-slice";
 
-export const getUsers = createAsyncThunk(
-  "users/getUsers",
-  async (_, { rejectWithValue }) => {
-    const response = await fetch("http://localhost:3001/api/users/");
-    const result = await response.json();
+// export const getUsers = createAsyncThunk(
+//   "users/getUsers",
+//   async (_, { rejectWithValue }) => {
+//     const response = await fetch("http://localhost:3001/api/users/");
+//     const result = await response.json();
 
-    if (!result.length) {
-      rejectWithValue("No Users");
-      return;
-    }
+//     if (!result.length) {
+//       rejectWithValue("No Users");
+//       return;
+//     }
 
-    return result;
-  },
-  {
-    condition: (_, { getState }) => {
-      return !selectUsersIds(getState()).length;
-    },
-  }
-);
+//     return result;
+//   },
+//   {
+//     condition: (_, { getState }) => {
+//       return !selectUsersIds(getState()).length;
+//     },
+//   }
+// );

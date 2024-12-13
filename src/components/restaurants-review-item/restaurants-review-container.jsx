@@ -1,19 +1,44 @@
-import { useSelector } from "react-redux";
-import { selectReviewsById } from "../../redux/entities/reviews/reviews-slice";
 import { RestaurantsReviewItem } from "./restaurants-review-item";
+import { useGetUsersQuery } from "../../redux/services/api";
+import { useSign } from "../sign-context/use-sign";
 
-export const RestaurantsReviewContainer = ({ id }) => {
-  const review = useSelector((state) => selectReviewsById(state, id));
+export const RestaurantsReviewContainer = ({ parameters }) => {
+  const { text, userId, rating, id } = parameters;
+  const { userId: authorizedUser } = useSign();
+  const isReviewChanging = userId == authorizedUser;
 
-  if (!review) {
+  const {
+    data: user,
+    isLoading,
+    isError,
+  } = useGetUsersQuery(undefined, {
+    selectFromResult: (result) => ({
+      ...result,
+      data: result?.data?.find(({ id: id }) => {
+        return id == userId;
+      }),
+    }),
+  });
+
+  if (isLoading) {
+    return "Loading";
+  }
+
+  if (isError) {
+    return "Error";
+  }
+
+  if (!user) {
     return;
   }
 
-  const { text, userId, rating } = review;
-
-  if (!review) {
-    return;
-  }
-
-  return <RestaurantsReviewItem text={text} rating={rating} userId={userId} />;
+  return (
+    <RestaurantsReviewItem
+      isReviewChanging={isReviewChanging}
+      text={text}
+      rating={rating}
+      id={id}
+      userName={user.name}
+    />
+  );
 };

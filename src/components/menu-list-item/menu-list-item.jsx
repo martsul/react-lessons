@@ -5,11 +5,11 @@ import styles from "./menu-list-item.module.css";
 import { useTheme } from "../theme-context/use-theme";
 import { Link } from "react-router-dom";
 
-export const MenuListItem = ({ params, id, increaseValue, decreaseValue }) => {
+export const MenuListItem = ({ parameters, increaseValue, decreaseValue }) => {
   const { signIn } = useSign();
   const { isLightTheme } = useTheme();
 
-  const { name, price, ingredients, quantity } = params;
+  const { name, price, ingredients, quantity, id } = parameters;
 
   return (
     <li

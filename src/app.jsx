@@ -13,6 +13,7 @@ import { HomePage } from "./pages/home-page/home-page";
 import { MenuContainer } from "./pages/menu/menu-container";
 import { ReviewsContainer } from "./pages/reviews/reviews-container";
 import { DishContainer } from "./pages/dish/dish-container";
+import { EditReviewContextProvider } from "./components/edit-review-context/edit-review-context";
 
 export const App = () => {
   const router = createBrowserRouter([
@@ -49,7 +50,7 @@ export const App = () => {
           ],
         },
         {
-          path: "dish/:menuId",
+          path: "dish/:dishId",
           element: <DishContainer />,
         },
       ],
@@ -60,7 +61,9 @@ export const App = () => {
     <Provider store={store}>
       <ThemeContextProvider>
         <SignContextProvider>
-          <RouterProvider router={router} />
+          <EditReviewContextProvider>
+            <RouterProvider router={router} />
+          </EditReviewContextProvider>
         </SignContextProvider>
       </ThemeContextProvider>
     </Provider>

@@ -1,17 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { CartItem } from "./cart-item";
-import { selectMenuById } from "../../redux/entities/menu/menu-slice";
 import {
   decreaseItemsInCart,
   deleteItemsInCart,
   increaseItemsInCart,
   selectAmountItemsInCart,
 } from "../../redux/ui/cart/cart-slice";
+import { useGetDishByIdQuery } from "../../redux/services/api";
 
-export const CartItemContainer = ({ id }) => {
-  const { ingredients, name, price } = useSelector((state) =>
-    selectMenuById(state, id)
-  );
+export const CartItemContainer = ({ parameters }) => {
+  const { id } = parameters;
+  const { data, isLoading, isError } = useGetDishByIdQuery(id);
+
   const quantity = useSelector((state) => selectAmountItemsInCart(state, id));
 
   const dispatch = useDispatch();
@@ -19,7 +19,19 @@ export const CartItemContainer = ({ id }) => {
   const decreaseValue = () => dispatch(decreaseItemsInCart(id));
   const deleteItem = () => dispatch(deleteItemsInCart(id));
 
-  
+  if (isLoading) {
+    return "Loading";
+  }
+
+  if (isError) {
+    return "Error";
+  }
+
+  if (!data) {
+    return;
+  }
+
+  const { name, ingredients, price } = data;
 
   return (
     <CartItem

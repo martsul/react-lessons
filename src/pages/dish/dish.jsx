@@ -4,11 +4,11 @@ import { useSign } from "../../components/sign-context/use-sign";
 import styles from "./dish.module.css";
 import { useTheme } from "../../components/theme-context/use-theme";
 
-export const Dish = ({ params, increaseValue, decreaseValue }) => {
+export const Dish = ({ data, quantity, increaseValue, decreaseValue }) => {
   const { signIn } = useSign();
   const { isLightTheme } = useTheme();
 
-  const { ingredients, quantity, price, name } = params;
+  const { ingredients, price, name } = data;
 
   return (
     <section>

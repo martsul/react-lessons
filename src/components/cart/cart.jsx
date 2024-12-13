@@ -5,7 +5,7 @@ import { CartItemContainer } from "../cart-item/cart-item-container";
 import styles from "./cart.module.css";
 
 export const Cart = () => {
-  const cartItems = useSelector(selectCartItems);
+  const cartItems = useSelector(selectCartItems).map((id) => ({ id: id }));
 
   if (cartItems.length <= 0) {
     return null;
@@ -14,7 +14,7 @@ export const Cart = () => {
   return (
     <section>
       <div className={styles.container}>
-        <ListInfo title={"cart"} ids={cartItems} Element={CartItemContainer} />
+        <ListInfo title={"cart"} data={cartItems} Element={CartItemContainer} />
       </div>
     </section>
   );

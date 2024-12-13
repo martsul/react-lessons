@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectMenuById } from "../../redux/entities/menu/menu-slice";
 import { MenuListItem } from "./menu-list-item";
 import {
   decreaseItemsInCart,
@@ -7,24 +6,17 @@ import {
   selectAmountItemsInCart,
 } from "../../redux/ui/cart/cart-slice";
 
-export const MenuListContainer = ({ id }) => {
-  const dish = useSelector((state) => selectMenuById(state, id));
-
+export const MenuListContainer = ({ parameters }) => {
   const dispatch = useDispatch();
 
   const quantity =
-    useSelector((state) => selectAmountItemsInCart(state, id)) || 0;
-  const increaseValue = () => dispatch(increaseItemsInCart(id));
-  const decreaseValue = () => dispatch(decreaseItemsInCart(id));
-
-  if (!dish) {
-    return;
-  }
+    useSelector((state) => selectAmountItemsInCart(state, parameters.id)) || 0;
+  const increaseValue = () => dispatch(increaseItemsInCart(parameters.id));
+  const decreaseValue = () => dispatch(decreaseItemsInCart(parameters.id));
 
   return (
     <MenuListItem
-      id={id}
-      params={{ ...dish, quantity }}
+      parameters={{ ...parameters, quantity }}
       decreaseValue={decreaseValue}
       increaseValue={increaseValue}
     />

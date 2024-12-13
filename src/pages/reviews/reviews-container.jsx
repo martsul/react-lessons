@@ -1,41 +1,59 @@
 import { useParams } from "react-router-dom";
 import { Reviews } from "./reviews";
-import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../../redux/entities/restaurants/restaurants-slice";
-import { useRequest } from "../../redux/hooks/use-request";
-import { getReviews } from "../../redux/entities/reviews/get-reviews";
-import { getUsers } from "../../redux/entities/users/get-uesrs";
 import {
-  STATUS_PENDING,
-  STATUS_REJECTED,
-} from "../../redux/ui/request/request-slice";
+  useAddReviewMutation,
+  useEditReviewMutation,
+  useGetReviewsByRestaurantIdQuery,
+  useGetUsersQuery,
+} from "../../redux/services/api";
+import { useCallback } from "react";
 
 export const ReviewsContainer = () => {
   const { restaurantId } = useParams();
-  const requestReviewsStatus = useRequest(getReviews, restaurantId);
-  const requestUsersStatus = useRequest(getUsers);
 
-  const { reviews } = useSelector((state) =>
-    selectRestaurantById(state, restaurantId)
+  const {
+    data,
+    isFetching: isGerReviewsFetching,
+    isError,
+  } = useGetReviewsByRestaurantIdQuery(restaurantId);
+  useGetUsersQuery();
+
+  const [addReview, { isLoading: isAddReviewFetching }] =
+    useAddReviewMutation();
+
+  const handleAddReview = useCallback(
+    (review) => {
+      addReview({ restaurantId, review });
+    },
+    [addReview, restaurantId]
   );
 
-  if (
-    requestReviewsStatus == STATUS_PENDING ||
-    requestUsersStatus == STATUS_PENDING
-  ) {
+  const [editReview] = useEditReviewMutation();
+
+  const handleEditReview = useCallback(
+    (reviewId, review) => {
+      editReview({ reviewId, review });
+    },
+    [editReview]
+  );
+
+  if (isGerReviewsFetching || isAddReviewFetching) {
     return "Loading";
   }
 
-  if (
-    requestReviewsStatus == STATUS_REJECTED ||
-    requestUsersStatus == STATUS_REJECTED
-  ) {
+  if (isError) {
     return "Error";
   }
 
-  if (!reviews) {
+  if (!data) {
     return;
   }
 
-  return <Reviews reviews={reviews} />;
+  return (
+    <Reviews
+      data={data}
+      onAditReview={handleEditReview}
+      onAddReview={handleAddReview}
+    />
+  );
 };

@@ -1,30 +1,24 @@
 import { useParams } from "react-router-dom";
 import { Menu } from "./menu";
-import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../../redux/entities/restaurants/restaurants-slice";
-import { useRequest } from "../../redux/hooks/use-request";
-import { getMenu } from "../../redux/entities/menu/get-menu";
-import { STATUS_PENDING, STATUS_REJECTED } from "../../redux/ui/request/request-slice";
+import { useGetMenuByRestaurantIdQuery } from "../../redux/services/api";
 
 export const MenuContainer = () => {
   const { restaurantId } = useParams();
-  const requestStatus = useRequest(getMenu, restaurantId);
 
-  const { menu } = useSelector((state) =>
-    selectRestaurantById(state, restaurantId)
-  );
+  const { data, isError, isLoading } =
+    useGetMenuByRestaurantIdQuery(restaurantId);
 
-  if (requestStatus == STATUS_PENDING) {
-    return "Loading";
-  }
-
-  if (requestStatus == STATUS_REJECTED) {
+  if (isError) {
     return "Error";
   }
 
-  if (!menu) {
+  if (isLoading) {
+    return "Loading";
+  }
+
+  if (!data) {
     return;
   }
 
-  return <Menu menu={menu} />;
+  return <Menu data={data} />;
 };

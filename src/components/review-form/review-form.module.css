@@ -8,12 +8,15 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
-  align-items: start;
   margin-bottom: 90px;
 }
 
 .form.light {
   background: #fff;
+}
+
+.form.changing {
+  background: #000;
 }
 
 .title {
@@ -78,4 +81,10 @@
   color: #fff;
   padding: 17px 50px;
   text-transform: uppercase;
+}
+
+.close {
+  color: #fff;
+  font: 400 14px/1 var(--font);
+  text-align: right;
 }
