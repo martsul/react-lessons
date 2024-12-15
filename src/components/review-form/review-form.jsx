@@ -28,7 +28,6 @@ export const ReviewForm = ({ onAditReview, onAddReview }) => {
       setText(reviewParameters.text);
       setRating(reviewParameters.rating);
     }
-    // Оно работает, но мне кажется я намудрил =) . Как сделать правильнее?
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [canChanging, reviewParameters.rating, reviewParameters.text]);
 

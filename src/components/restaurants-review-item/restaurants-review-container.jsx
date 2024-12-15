@@ -5,7 +5,7 @@ import { useSign } from "../sign-context/use-sign";
 export const RestaurantsReviewContainer = ({ parameters }) => {
   const { text, userId, rating, id } = parameters;
   const { userId: authorizedUser } = useSign();
-  const isReviewChanging = userId == authorizedUser;
+  const isReviewChanging = userId === authorizedUser;
 
   const {
     data: user,
