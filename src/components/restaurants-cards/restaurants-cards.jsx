@@ -1,13 +1,10 @@
 import styles from "./restaurants-cards.module.css";
 import classNames from "classnames";
-import { useTheme } from "../theme-context/use-theme";
-import { ReviewForm } from "../review-form/reviewForm";
-import { useSign } from "../sign-context/use-sign";
 import { ContentTab } from "../content-tab/content-tab";
+import { useTheme } from "../theme-context/use-theme";
 
 export const RestaurantsCard = ({ name, children }) => {
   const { isLightTheme } = useTheme();
-  const { signIn } = useSign();
 
   return (
     <>
@@ -22,7 +19,6 @@ export const RestaurantsCard = ({ name, children }) => {
         <ContentTab />
         {children}
       </div>
-      {signIn && <ReviewForm />}
     </>
   );
 };

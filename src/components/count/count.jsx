@@ -11,7 +11,7 @@ export const Count = ({ value, increaseValue, decreaseValue }) => {
   return (
     <div className={classNames(styles.block, { [styles.light]: isLightTheme })}>
       <CountButton clickFunc={decreaseValue} Content={MinusSvg} />
-      <span className={styles.num}>{value}</span>
+      <input className={styles.num} type="text" value={value} readOnly />
       <CountButton clickFunc={increaseValue} Content={PlusSvg} />
     </div>
   );

@@ -1,49 +1,43 @@
 import { useParams } from "react-router-dom";
 import { Dish } from "./dish";
 import { useDispatch, useSelector } from "react-redux";
-import { selectMenuById } from "../../redux/entities/menu/menu-slice";
 import {
   decreaseItemsInCart,
   increaseItemsInCart,
   selectAmountItemsInCart,
 } from "../../redux/ui/cart/cart-slice";
-import { useRequest } from "../../redux/hooks/use-request";
-import { getDish } from "../../redux/entities/dish/get-dish";
-import {
-  STATUS_PENDING,
-  STATUS_REJECTED,
-} from "../../redux/ui/request/request-slice";
+import { useGetDishByIdQuery } from "../../redux/services/api";
 
 export const DishContainer = () => {
-  const { menuId } = useParams();
+  const { dishId } = useParams();
 
-  const requestStatus = useRequest(getDish, menuId);
+  const { data, isError, isLoading } = useGetDishByIdQuery(dishId);
 
   const dispatch = useDispatch();
 
-  const params = useSelector((state) => selectMenuById(state, menuId));
-
   const quantity =
-    useSelector((state) => selectAmountItemsInCart(state, menuId)) || 0;
+    useSelector((state) => selectAmountItemsInCart(state, dishId)) || 0;
 
-  const increaseValue = () => dispatch(increaseItemsInCart(menuId));
+  const increaseValue = () => dispatch(increaseItemsInCart(dishId));
 
-  const decreaseValue = () => dispatch(decreaseItemsInCart(menuId));
+  const decreaseValue = () => dispatch(decreaseItemsInCart(dishId));
 
-  if (requestStatus == STATUS_REJECTED) {
+  if (isError) {
     return "Error";
   }
 
-  if (requestStatus == STATUS_PENDING) {
+  if (isLoading) {
     return "Loading";
   }
-  if (!params) {
+
+  if (!data) {
     return;
   }
 
   return (
     <Dish
-      params={{ ...params, quantity }}
+      data={data}
+      quantity={quantity}
       increaseValue={increaseValue}
       decreaseValue={decreaseValue}
     />
