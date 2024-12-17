@@ -5,9 +5,8 @@ import styles from "./layout.module.css";
 import { Cart } from "../cart/cart";
 import { useSign } from "../sign-context/use-sign";
 import { ProgressBar } from "../progress-bar/progress-bar";
-import { Outlet } from "react-router-dom";
 
-export const Layout = () => {
+export const Layout = ({ children }) => {
   const { isLightTheme } = useTheme();
   const { signIn } = useSign();
 
@@ -18,7 +17,7 @@ export const Layout = () => {
       <Header />
       <main>
         <ProgressBar />
-        <Outlet />
+        {children}
         {signIn && <Cart />}
       </main>
       <footer className={styles.footer}>

@@ -1,9 +1,9 @@
-import { useParams } from "react-router-dom";
 import { useGetRestaurantsQuery } from "../../redux/services/api";
 import { RestaurantsCard } from "./restaurants-cards";
+import { usePathname } from "next/navigation";
 
 export const RestaurantsCardsContainer = ({ children }) => {
-  const { restaurantId } = useParams();
+  const restaurantId = (usePathname()).split("/")[2];
 
   const { data, isError, isLoading } = useGetRestaurantsQuery(undefined, {
     selectFromResult: (result) => ({
