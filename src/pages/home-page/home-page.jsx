@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
 import styles from "./home-page.module.css";
 import image from "../../img/scooter-guy.png";
 import classNames from "classnames";
 import { useTheme } from "../../components/theme-context/use-theme";
+import Link from "next/link";
 
 export const HomePage = () => {
   const { isLightTheme } = useTheme();
@@ -19,11 +19,11 @@ export const HomePage = () => {
               We provide super fast-delivery service. Let’s use our services
               right now and get discounts of up to 50%
             </p>
-            <Link to={"/restaurants"} className={styles.link}>
+            <Link href={"restaurants"} className={styles.link}>
               Explore Food
             </Link>
           </div>
-          <img className={styles.img} src={image} alt="Scooter Guy" />
+          <img className={styles.img} src={image.src} alt="Scooter Guy" />
         </div>
       </section>
     </main>
