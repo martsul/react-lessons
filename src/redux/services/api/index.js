@@ -19,7 +19,7 @@ export const apiSlice = createApi({
     }),
     getReviewsByRestaurantId: builder.query({
       query: (restaurantId) => `/reviews?restaurantId=${restaurantId}`,
-      providesTags: (...result) => [{ type: "Reviews", id: result[2] }],
+      providesTags: () => [{ type: "Reviews" }],
     }),
     getUsers: builder.query({
       query: () => "/users",
@@ -30,8 +30,8 @@ export const apiSlice = createApi({
         method: "POST",
         body: review,
       }),
-      invalidatesTags: (...result) => [
-        { type: "Reviews", restaurantId: result[2].restaurantId },
+      invalidatesTags: () => [
+        { type: "Reviews" },
       ],
     }),
     editReview: builder.mutation({
@@ -40,8 +40,8 @@ export const apiSlice = createApi({
         method: "PATCH",
         body: review,
       }),
-      invalidatesTags: (...result) => [
-        { type: "Reviews", reviewId: result[2].reviewId },
+      invalidatesTags: () => [
+        { type: "Reviews" },
       ],
     }),
   }),

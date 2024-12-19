@@ -1,10 +1,10 @@
-import { Outlet } from "react-router-dom";
+
 import { RestaurantsCardsContainer } from "../../components/restaurants-cards/restaurants-cards-container";
 
-export const RestaurantPage = () => {
+export const RestaurantPage = ({children}) => {
   return (
     <RestaurantsCardsContainer>
-      <Outlet />
+      {children}
     </RestaurantsCardsContainer>
   );
 };
