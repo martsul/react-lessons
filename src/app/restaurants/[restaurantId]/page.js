@@ -1,5 +1,3 @@
-const RestaurantPage = () => {
-  return <></>;
-};
+import { MenuContainer } from "../../../pages/menu/menu-container";
 
-export default RestaurantPage;
+export default MenuContainer;

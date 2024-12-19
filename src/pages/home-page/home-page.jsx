@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./home-page.module.css";
 import image from "../../img/scooter-guy.png";
 import classNames from "classnames";

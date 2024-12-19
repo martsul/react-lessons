@@ -1,3 +1,5 @@
+"use client";
+
 import classNames from "classnames";
 import { Header } from "../header/header";
 import { useTheme } from "../theme-context/use-theme";

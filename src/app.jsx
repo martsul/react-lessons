@@ -1,23 +1,20 @@
-"use client";
-
 import "./reset.css";
 import "./fonts.css";
 import "./root.css";
 import { ThemeContextProvider } from "./components/theme-context/theme-context";
 import { SignContextProvider } from "./components/sign-context/sign-context";
-import { Provider } from "react-redux";
-import { store } from "./redux/store";
 import { EditReviewContextProvider } from "./components/edit-review-context/edit-review-context";
+import { ReduxProvider } from "./components/redux-provider/redux-provider";
 
 const App = ({ children }) => {
   return (
-    <Provider store={store}>
+    <ReduxProvider>
       <ThemeContextProvider>
         <SignContextProvider>
           <EditReviewContextProvider>{children}</EditReviewContextProvider>
         </SignContextProvider>
       </ThemeContextProvider>
-    </Provider>
+    </ReduxProvider>
   );
 };
 

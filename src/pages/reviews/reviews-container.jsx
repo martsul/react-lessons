@@ -8,10 +8,10 @@ import {
   useGetUsersQuery,
 } from "../../redux/services/api";
 import { useCallback } from "react";
-import { usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
 
 export const ReviewsContainer = () => {
-  const restaurantId = usePathname().split("/")[2];
+  const { restaurantId } = useParams();
 
   const {
     data,

@@ -1,9 +1,11 @@
+"use client";
+
 import { useGetRestaurantsQuery } from "../../redux/services/api";
 import { RestaurantsCard } from "./restaurants-cards";
-import { usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
 
 export const RestaurantsCardsContainer = ({ children }) => {
-  const restaurantId = (usePathname()).split("/")[2];
+  const { restaurantId } = useParams();
 
   const { data, isError, isLoading } = useGetRestaurantsQuery(undefined, {
     selectFromResult: (result) => ({
@@ -24,5 +26,9 @@ export const RestaurantsCardsContainer = ({ children }) => {
     return;
   }
 
-  return <RestaurantsCard name={data.name}>{children}</RestaurantsCard>;
+  return (
+    <RestaurantsCard restaurantId={restaurantId} name={data.name}>
+      {children}
+    </RestaurantsCard>
+  );
 };

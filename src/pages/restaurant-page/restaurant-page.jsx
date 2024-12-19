@@ -1,4 +1,3 @@
-"use client"
 
 import { RestaurantsCardsContainer } from "../../components/restaurants-cards/restaurants-cards-container";
 

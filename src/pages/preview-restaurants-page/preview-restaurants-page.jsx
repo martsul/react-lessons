@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./restaurants-page.module.css";
 import classNames from "classnames";
 import { useTheme } from "../../components/theme-context/use-theme";

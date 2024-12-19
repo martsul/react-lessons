@@ -8,10 +8,10 @@ import {
   selectAmountItemsInCart,
 } from "../../redux/ui/cart/cart-slice";
 import { useGetDishByIdQuery } from "../../redux/services/api";
-import { usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
 
 export const DishContainer = () => {
-  const dishId = usePathname().split("/")[2];
+  const { dishId } = useParams();
 
   const { data, isError, isLoading } = useGetDishByIdQuery(dishId);
 

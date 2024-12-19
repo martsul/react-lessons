@@ -1,5 +1,5 @@
 const RestaurantsPage = () => {
-  return <></>;
+  return null;
 };
 
 export default RestaurantsPage;

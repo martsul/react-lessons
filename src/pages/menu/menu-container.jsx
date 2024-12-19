@@ -2,10 +2,10 @@
 
 import { Menu } from "./menu";
 import { useGetMenuByRestaurantIdQuery } from "../../redux/services/api";
-import { usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
 
 export const MenuContainer = () => {
-  const restaurantId = usePathname().split("/")[2];
+  const { restaurantId } = useParams();
 
   const { data, isError, isLoading } =
     useGetMenuByRestaurantIdQuery(restaurantId);
