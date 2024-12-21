@@ -1,6 +1,8 @@
-import { useParams } from "react-router-dom";
+"use client";
+
 import { useGetRestaurantsQuery } from "../../redux/services/api";
 import { RestaurantsCard } from "./restaurants-cards";
+import { useParams } from "next/navigation";
 
 export const RestaurantsCardsContainer = ({ children }) => {
   const { restaurantId } = useParams();
@@ -24,5 +26,9 @@ export const RestaurantsCardsContainer = ({ children }) => {
     return;
   }
 
-  return <RestaurantsCard name={data.name}>{children}</RestaurantsCard>;
+  return (
+    <RestaurantsCard restaurantId={restaurantId} name={data.name}>
+      {children}
+    </RestaurantsCard>
+  );
 };

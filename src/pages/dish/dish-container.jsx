@@ -1,4 +1,5 @@
-import { useParams } from "react-router-dom";
+"use client";
+
 import { Dish } from "./dish";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -7,6 +8,7 @@ import {
   selectAmountItemsInCart,
 } from "../../redux/ui/cart/cart-slice";
 import { useGetDishByIdQuery } from "../../redux/services/api";
+import { useParams } from "next/navigation";
 
 export const DishContainer = () => {
   const { dishId } = useParams();

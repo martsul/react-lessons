@@ -1,9 +1,9 @@
 import styles from "./restaurants-cards.module.css";
 import classNames from "classnames";
-import { ContentTab } from "../content-tab/content-tab";
+import { RestaurantInfoTabs } from "../restaurant-info-tabs/restaurant-info-tabs";
 import { useTheme } from "../theme-context/use-theme";
 
-export const RestaurantsCard = ({ name, children }) => {
+export const RestaurantsCard = ({ name, children, restaurantId }) => {
   const { isLightTheme } = useTheme();
 
   return (
@@ -16,7 +16,7 @@ export const RestaurantsCard = ({ name, children }) => {
         >
           {name}
         </h2>
-        <ContentTab />
+        <RestaurantInfoTabs restaurantId={restaurantId} />
         {children}
       </div>
     </>

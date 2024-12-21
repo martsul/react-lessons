@@ -1,10 +1,11 @@
+"use client";
+
 import styles from "./restaurants-page.module.css";
 import classNames from "classnames";
 import { useTheme } from "../../components/theme-context/use-theme";
 import { RestaurantsFiltersContainer } from "../../components/restaurants-filters/restaurants-filters-container";
-import { Outlet } from "react-router-dom";
 
-export const PreviewRestaurantsPage = () => {
+export const PreviewRestaurantsPage = ({ children }) => {
   const { isLightTheme } = useTheme();
 
   return (
@@ -17,9 +18,7 @@ export const PreviewRestaurantsPage = () => {
         </div>
       </section>
       <section>
-        <div className={styles.container}>
-          <Outlet />
-        </div>
+        <div className={styles.container}>{children}</div>
       </section>
     </>
   );

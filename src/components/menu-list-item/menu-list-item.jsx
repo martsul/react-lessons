@@ -3,7 +3,7 @@ import { Count } from "../count/count";
 import { useSign } from "../sign-context/use-sign";
 import styles from "./menu-list-item.module.css";
 import { useTheme } from "../theme-context/use-theme";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export const MenuListItem = ({ parameters, increaseValue, decreaseValue }) => {
   const { signIn } = useSign();
@@ -17,7 +17,7 @@ export const MenuListItem = ({ parameters, increaseValue, decreaseValue }) => {
         [styles.light]: isLightTheme,
       })}
     >
-      <Link to={`/dish/${id}`}>
+      <Link href={`/dish/${id}`}>
         <h4 className={styles.name}>{name}</h4>
         <p className={styles.ingredients}>{ingredients.join(", ")}</p>
       </Link>

@@ -1,24 +1,24 @@
 import styles from "./restaurants-filters.module.css";
 import { useTheme } from "../theme-context/use-theme";
 import classNames from "classnames";
-import { NavLink } from "react-router-dom";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 
 export const RestaurantsFilters = ({ parameters }) => {
   const { isLightTheme } = useTheme();
-
   const { name, id } = parameters;
+  const { restaurantId } = useParams();
+  const tabIsACtive = restaurantId === id;
 
   return (
-    <NavLink
-      className={({ isActive }) =>
-        classNames(styles.filter, {
-          [styles.light]: isLightTheme,
-          [styles.active]: isActive,
-        })
-      }
-      to={`${id}`}
+    <Link
+      className={classNames(styles.filter, {
+        [styles.active]: tabIsACtive,
+        [styles.light]: isLightTheme,
+      })}
+      href={`/restaurants/${id}`}
     >
       {name}
-    </NavLink>
+    </Link>
   );
 };

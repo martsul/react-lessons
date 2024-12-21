@@ -1,4 +1,5 @@
-import { useParams } from "react-router-dom";
+"use client";
+
 import { Reviews } from "./reviews";
 import {
   useAddReviewMutation,
@@ -7,6 +8,7 @@ import {
   useGetUsersQuery,
 } from "../../redux/services/api";
 import { useCallback } from "react";
+import { useParams } from "next/navigation";
 
 export const ReviewsContainer = () => {
   const { restaurantId } = useParams();
