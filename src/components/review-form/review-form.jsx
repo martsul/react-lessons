@@ -1,3 +1,5 @@
+"use client";
+
 import { Count } from "../count/count";
 import { useForm } from "./use-form";
 import styles from "./review-form.module.css";
@@ -7,8 +9,11 @@ import classNames from "classnames";
 import { useEditReview } from "../edit-review-context/use-edit-review";
 import { useSign } from "../sign-context/use-sign";
 import { useEffect } from "react";
+import { addReview } from "../../services/add-review";
+import { useParams } from "next/navigation";
+import { editReview } from "../../services/edit-review";
 
-export const ReviewForm = ({ onAditReview, onAddReview }) => {
+export const ReviewForm = () => {
   const {
     setText,
     setRating,
@@ -21,7 +26,8 @@ export const ReviewForm = ({ onAditReview, onAddReview }) => {
   const { text, rating } = formParams;
   const { changingReview, onChangeReview } = useEditReview();
   const { canChanging, reviewId, reviewParameters } = changingReview;
-  const { userId } = useSign();
+  const { userId, signIn } = useSign();
+  const { restaurantId } = useParams();
 
   useEffect(() => {
     if (canChanging) {
@@ -33,10 +39,10 @@ export const ReviewForm = ({ onAditReview, onAddReview }) => {
 
   const onSubmit = () => {
     if (canChanging) {
-      onAditReview(reviewId, { text, rating, userId });
+      editReview(reviewId, { text, rating, userId });
       onChangeReview({});
     } else {
-      onAddReview({ text, rating, userId });
+      addReview(restaurantId, { text, rating, userId });
     }
   };
 
@@ -46,7 +52,7 @@ export const ReviewForm = ({ onAditReview, onAddReview }) => {
     setRating("");
   };
 
-  return (
+  return signIn ? (
     <form
       className={classNames(styles.form, {
         [styles.light]: isLightTheme,
@@ -96,5 +102,5 @@ export const ReviewForm = ({ onAditReview, onAddReview }) => {
         content={"Submit"}
       ></Button>
     </form>
-  );
+  ) : null;
 };

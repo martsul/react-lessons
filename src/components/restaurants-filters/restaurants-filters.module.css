@@ -1,3 +1,20 @@
+.filters {
+  border-bottom: 1px solid var(--border-grey);
+  margin-bottom: 35px;
+}
+
+.light.filters {
+  border-bottom: 1px solid var(--l-border);
+}
+
+.container {
+  max-width: var(--wide-container);
+  margin: 0 auto;
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+}
+
 .filter {
   font: 400 18px/1.2 var(--font);
   color: var(--text-grey);

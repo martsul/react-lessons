@@ -1,3 +1,3 @@
-import { ReviewsContainer } from "../../../../pages/reviews/reviews-container";
+import { ReviewsPage } from "../../../../content/reviews-page/reviews-page";
 
-export default ReviewsContainer;
+export default ReviewsPage;

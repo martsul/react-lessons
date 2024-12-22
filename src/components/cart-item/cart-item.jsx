@@ -1,3 +1,5 @@
+"use client";
+
 import classNames from "classnames";
 import { useTheme } from "../theme-context/use-theme";
 import styles from "./cart-item.module.css";
@@ -6,11 +8,11 @@ import { Count } from "../count/count";
 import { CountButton } from "../count-button/count-button";
 import { CrossSvg } from "../svg/cross-svg";
 
-export const CartItem = ({ params, functions }) => {
+export const CartItem = ({ parameters, functions }) => {
   const { isLightTheme } = useTheme();
   const { signIn } = useSign();
 
-  const { ingredients, name, price, quantity } = params;
+  const { ingredients, name, price, quantity } = parameters;
   const { increaseValue, decreaseValue, deleteItem } = functions;
 
   return (
@@ -25,9 +27,7 @@ export const CartItem = ({ params, functions }) => {
       </div>
       <div className={styles.interaction}>
         <div className={styles.count}>
-          <span className={styles.price}>
-            {(quantity || 1) * price} $
-          </span>
+          <span className={styles.price}>{(quantity || 1) * price} $</span>
           {signIn && (
             <Count
               value={quantity}

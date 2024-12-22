@@ -1,24 +1,33 @@
+"use client";
+
 import styles from "./restaurants-filters.module.css";
 import { useTheme } from "../theme-context/use-theme";
 import classNames from "classnames";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
-export const RestaurantsFilters = ({ parameters }) => {
+export const RestaurantsFilters = ({ data }) => {
   const { isLightTheme } = useTheme();
-  const { name, id } = parameters;
-  const { restaurantId } = useParams();
-  const tabIsACtive = restaurantId === id;
+  const { restaurantId: activeRestaurant } = useParams();
 
   return (
-    <Link
-      className={classNames(styles.filter, {
-        [styles.active]: tabIsACtive,
-        [styles.light]: isLightTheme,
-      })}
-      href={`/restaurants/${id}`}
+    <section
+      className={classNames(styles.filters, { [styles.light]: isLightTheme })}
     >
-      {name}
-    </Link>
+      <div className={styles.container}>
+        {data.map((restaurant) => (
+          <Link
+            key={restaurant.id}
+            className={classNames(styles.filter, {
+              [styles.active]: restaurant.id === activeRestaurant,
+              [styles.light]: isLightTheme,
+            })}
+            href={`/restaurants/${restaurant.id}`}
+          >
+            {restaurant.name}
+          </Link>
+        ))}
+      </div>
+    </section>
   );
 };

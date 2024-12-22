@@ -12,7 +12,9 @@ export const Dish = ({ data, quantity, increaseValue, decreaseValue }) => {
 
   return (
     <section>
-      <div className={classNames(styles.item, { [styles.light]: isLightTheme })}>
+      <div
+        className={classNames(styles.item, { [styles.light]: isLightTheme })}
+      >
         <div>
           <h4 className={styles.name}>{name}</h4>
           <p className={styles.ingredients}>{ingredients.join(", ")}</p>

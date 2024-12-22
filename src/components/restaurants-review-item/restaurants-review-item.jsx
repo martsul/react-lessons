@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./restaurants-review-item.module.css";
 import { useTheme } from "../theme-context/use-theme";
 import classNames from "classnames";
@@ -5,15 +7,18 @@ import { useSign } from "../sign-context/use-sign";
 import { useEditReview } from "../edit-review-context/use-edit-review";
 
 export const RestaurantsReviewItem = ({
-  isReviewChanging,
-  userName,
+  userId,
+  users,
   text,
   rating,
-  id,
+  reviewId,
 }) => {
+  const userName = users.find(({ id }) => id === userId).name;
   const { isLightTheme } = useTheme();
   const { signIn } = useSign();
   const { onChangeReview } = useEditReview();
+  const { userId: authorizedUser } = useSign();
+  const isReviewChanging = userId === authorizedUser;  
 
   return (
     <>
@@ -23,7 +28,7 @@ export const RestaurantsReviewItem = ({
             <button
               onClick={() => {
                 onChangeReview({
-                  reviewId: id,
+                  reviewId: reviewId,
                   text: text,
                   rating: rating,
                   isEdit: true,
