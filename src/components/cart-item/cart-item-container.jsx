@@ -19,9 +19,6 @@ export const CartItemContainer = ({ parameters }) => {
   const decreaseValue = () => dispatch(decreaseItemsInCart(id));
   const deleteItem = () => dispatch(deleteItemsInCart(id));
 
-  console.log(quantity);
-  
-
   if (isLoading) {
     return "Loading";
   }

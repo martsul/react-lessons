@@ -8,8 +8,8 @@ import "../style/reset.css";
 import "../style/root.css";
 
 export const metadata = {
-  title: "Delivery",
-  description: "Delivery",
+  title: "Food Delivery",
+  description: "Food Delivery",
 };
 
 export default function RootLayout({ children }) {

@@ -5,6 +5,9 @@ export const editReview = (reviewId, review) => {
       "Content-Type": "application/json;charset=utf-8",
     },
     body: JSON.stringify(review),
-    next: { tags: ["getHeadphones"] },
+  }).then((resolve) => {
+    if (resolve.ok) {
+      location.reload();
+    }
   });
 };
