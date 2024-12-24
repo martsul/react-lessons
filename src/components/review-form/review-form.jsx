@@ -12,8 +12,9 @@ import { useEffect } from "react";
 import { addReview } from "../../services/add-review";
 import { useParams } from "next/navigation";
 import { editReview } from "../../services/edit-review";
+import { getReviewsByRestaurantId } from "../../services/get-reviews-by-restaurant-id";
 
-export const ReviewForm = () => {
+export const ReviewForm = ({ setReviews }) => {
   const {
     setText,
     setRating,
@@ -39,10 +40,22 @@ export const ReviewForm = () => {
 
   const onSubmit = () => {
     if (canChanging) {
-      editReview(reviewId, { text, rating, userId });
+      editReview(reviewId, { text, rating, userId }).then((resolve) => {
+        if (resolve.ok) {
+          getReviewsByRestaurantId(restaurantId).then((resolve) => {
+            setReviews(resolve);
+          });
+        }
+      });
       onChangeReview({});
     } else {
-      addReview(restaurantId, { text, rating, userId });
+      addReview(restaurantId, { text, rating, userId }).then((resolve) => {
+        if (resolve.ok) {
+          getReviewsByRestaurantId(restaurantId).then((resolve) => {
+            setReviews(resolve);
+          });
+        }
+      });
     }
   };
 

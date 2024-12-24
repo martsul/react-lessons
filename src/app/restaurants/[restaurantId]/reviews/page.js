@@ -1,3 +1,6 @@
+import { ReviewsPageContainer } from "../../../../content/reviews-page/reviews-page-container";
+import { getRestaurantById } from "../../../../services/get-restaurant-by-id";
+
 export const generateMetadata = async ({ params }) => {
   const { restaurantId } = await params;
   const { name } = await getRestaurantById(restaurantId);
@@ -8,7 +11,4 @@ export const generateMetadata = async ({ params }) => {
   };
 };
 
-import { ReviewsPage } from "../../../../content/reviews-page/reviews-page";
-import { getRestaurantById } from "../../../../services/get-restaurant-by-id";
-
-export default ReviewsPage;
+export default ReviewsPageContainer;
