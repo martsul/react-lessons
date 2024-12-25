@@ -2,10 +2,11 @@ import classNames from "classnames";
 import { useTheme } from "../theme-context/use-theme";
 import styles from "./restaurant-info-tabs.module.css";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 
-export const RestaurantInfoTabs = ({ restaurantId }) => {
+export const RestaurantInfoTabs = () => {
   const { isLightTheme } = useTheme();
+  const { restaurantId } = useParams();
   const path = usePathname().split("/");
   const menuIsActive = path.includes("menu");
   const reviewsIsActive = path.includes("reviews");

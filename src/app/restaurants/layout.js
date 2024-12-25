@@ -1,3 +1,3 @@
-import { PreviewRestaurantsPage } from "../../pages/preview-restaurants-page/preview-restaurants-page";
+import { RestaurantsLayout } from "../../content/restaurants-layout/restaurants-layout";
 
-export default PreviewRestaurantsPage;
+export default RestaurantsLayout;

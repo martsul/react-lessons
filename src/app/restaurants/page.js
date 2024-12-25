@@ -1,5 +1,6 @@
-const RestaurantsPage = () => {
-  return null;
+export const metadata = {
+  title: "Restaurants",
+  description: "Restaurants",
 };
 
-export default RestaurantsPage;
+export default () => null;

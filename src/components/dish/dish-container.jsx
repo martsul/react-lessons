@@ -1,20 +1,14 @@
 "use client";
 
-import { Dish } from "./dish";
 import { useDispatch, useSelector } from "react-redux";
 import {
   decreaseItemsInCart,
   increaseItemsInCart,
   selectAmountItemsInCart,
 } from "../../redux/ui/cart/cart-slice";
-import { useGetDishByIdQuery } from "../../redux/services/api";
-import { useParams } from "next/navigation";
+import { Dish } from "./dish";
 
-export const DishContainer = () => {
-  const { dishId } = useParams();
-
-  const { data, isError, isLoading } = useGetDishByIdQuery(dishId);
-
+export const DishContainer = ({ data, dishId }) => {
   const dispatch = useDispatch();
 
   const quantity =
@@ -23,18 +17,6 @@ export const DishContainer = () => {
   const increaseValue = () => dispatch(increaseItemsInCart(dishId));
 
   const decreaseValue = () => dispatch(decreaseItemsInCart(dishId));
-
-  if (isError) {
-    return "Error";
-  }
-
-  if (isLoading) {
-    return "Loading";
-  }
-
-  if (!data) {
-    return;
-  }
 
   return (
     <Dish

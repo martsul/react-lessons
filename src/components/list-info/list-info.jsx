@@ -1,8 +1,10 @@
+"use client";
+
 import styles from "./list-info.module.css";
 import { useTheme } from "../theme-context/use-theme";
 import classNames from "classnames";
 
-export const ListInfo = ({ title, data, Element }) => {
+export const ListInfo = ({ title, children }) => {
   const { isLightTheme } = useTheme();
 
   return (
@@ -19,9 +21,7 @@ export const ListInfo = ({ title, data, Element }) => {
           [styles.light]: isLightTheme,
         })}
       >
-        {data.map((parameters) => (
-          <Element parameters={parameters} key={parameters.id} />
-        ))}
+        {children}
       </ul>
     </>
   );

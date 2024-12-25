@@ -1,22 +1,8 @@
 import { RestaurantsFilters } from "./restaurants-filters";
-import { useGetRestaurantsQuery } from "../../redux/services/api";
+import { getRestaurants } from "../../services/get-restaurants";
 
-export const RestaurantsFiltersContainer = () => {
-  const { data, isError, isLoading } = useGetRestaurantsQuery();
+export const RestaurantsFiltersContainer = async () => {
+  const data = await getRestaurants();
 
-  if (isError) {
-    return "Error";
-  }
-
-  if (isLoading) {
-    return "Loading";
-  }
-
-  if (!data) {
-    return;
-  }
-
-  return data.map((parameters) => (
-    <RestaurantsFilters key={parameters.id} parameters={parameters} />
-  ));
+  return <RestaurantsFilters data={data} />;
 };

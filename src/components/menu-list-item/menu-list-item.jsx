@@ -1,15 +1,30 @@
+"use client";
+
 import classNames from "classnames";
 import { Count } from "../count/count";
 import { useSign } from "../sign-context/use-sign";
 import styles from "./menu-list-item.module.css";
 import { useTheme } from "../theme-context/use-theme";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  decreaseItemsInCart,
+  increaseItemsInCart,
+  selectAmountItemsInCart,
+} from "../../redux/ui/cart/cart-slice";
 
-export const MenuListItem = ({ parameters, increaseValue, decreaseValue }) => {
+export const MenuListItem = ({ dish }) => {
   const { signIn } = useSign();
   const { isLightTheme } = useTheme();
 
-  const { name, price, ingredients, quantity, id } = parameters;
+  const dispatch = useDispatch();
+
+  const quantity =
+    useSelector((state) => selectAmountItemsInCart(state, dish.id)) || 0;
+  const increaseValue = () => dispatch(increaseItemsInCart(dish.id));
+  const decreaseValue = () => dispatch(decreaseItemsInCart(dish.id));
+
+  const { name, price, ingredients, id } = dish;
 
   return (
     <li

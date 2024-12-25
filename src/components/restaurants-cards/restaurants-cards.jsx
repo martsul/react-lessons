@@ -1,9 +1,11 @@
+"use client";
+
 import styles from "./restaurants-cards.module.css";
 import classNames from "classnames";
 import { RestaurantInfoTabs } from "../restaurant-info-tabs/restaurant-info-tabs";
 import { useTheme } from "../theme-context/use-theme";
 
-export const RestaurantsCard = ({ name, children, restaurantId }) => {
+export const RestaurantsCard = ({ name, children }) => {
   const { isLightTheme } = useTheme();
 
   return (
@@ -16,7 +18,7 @@ export const RestaurantsCard = ({ name, children, restaurantId }) => {
         >
           {name}
         </h2>
-        <RestaurantInfoTabs restaurantId={restaurantId} />
+        <RestaurantInfoTabs />
         {children}
       </div>
     </>

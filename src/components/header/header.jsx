@@ -1,3 +1,5 @@
+"use client"
+
 import classNames from "classnames";
 import { useTheme } from "../theme-context/use-theme";
 import { SignIn } from "../sign-in/sign-in";

@@ -1,3 +1,12 @@
-import { MenuContainer } from "../../../pages/menu/menu-container";
+import { getRestaurantById } from "../../../services/get-restaurant-by-id";
 
-export default MenuContainer;
+export const generateMetadata = async ({ params }) => {
+  const { restaurantId } = await params;
+  const { name } = await getRestaurantById(restaurantId);
+
+  return { title: name, description: name };
+};
+
+import { MenuPageContainer } from "../../../content/menu-page/menu-page-container";
+
+export default MenuPageContainer;

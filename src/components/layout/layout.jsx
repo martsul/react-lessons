@@ -20,7 +20,7 @@ export const Layout = ({ children }) => {
       <main>
         <ProgressBar />
         {children}
-        {signIn && <Cart />}
+        {signIn && <Cart/>}
       </main>
       <footer className={styles.footer}>
         <div className={styles.containerFooter}>

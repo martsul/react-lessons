@@ -1,4 +1,3 @@
-import { useDispatch, useSelector } from "react-redux";
 import { CartItem } from "./cart-item";
 import {
   decreaseItemsInCart,
@@ -6,6 +5,7 @@ import {
   increaseItemsInCart,
   selectAmountItemsInCart,
 } from "../../redux/ui/cart/cart-slice";
+import { useDispatch, useSelector } from "react-redux";
 import { useGetDishByIdQuery } from "../../redux/services/api";
 
 export const CartItemContainer = ({ parameters }) => {
@@ -35,7 +35,7 @@ export const CartItemContainer = ({ parameters }) => {
 
   return (
     <CartItem
-      params={{ ingredients, name, price, quantity }}
+      parameters={{ ingredients, name, price, quantity }}
       functions={{ increaseValue, decreaseValue, deleteItem }}
     />
   );

@@ -14,7 +14,11 @@ export const Cart = () => {
   return (
     <section>
       <div className={styles.container}>
-        <ListInfo title={"cart"} data={cartItems} Element={CartItemContainer} />
+        <ListInfo title={"cart"}>
+          {cartItems.map((cartItem) => (
+            <CartItemContainer key={cartItem.id} parameters={cartItem} />
+          ))}
+        </ListInfo>
       </div>
     </section>
   );
