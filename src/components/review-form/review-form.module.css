@@ -9,14 +9,11 @@
   flex-direction: column;
   gap: 30px;
   margin-bottom: 90px;
+  position: relative;
 }
 
 .form.light {
   background: #fff;
-}
-
-.form.changing {
-  background: #000;
 }
 
 .title {
@@ -49,6 +46,14 @@
 
 .light .name {
   color: var(--l-black);
+}
+
+.changing .name {
+  color: var(--green);
+}
+
+.changing.light .name {
+  color: var(--l-orange);
 }
 
 .star {
@@ -84,7 +89,13 @@
 }
 
 .close {
-  color: #fff;
-  font: 400 14px/1 var(--font);
-  text-align: right;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }

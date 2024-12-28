@@ -1,4 +1,5 @@
 import { getRestaurantById } from "../../../services/get-restaurant-by-id";
+import { MenuPageContainer } from "../../../content/menu-page/menu-page-container";
 
 export const generateMetadata = async ({ params }) => {
   const { restaurantId } = await params;
@@ -6,7 +7,5 @@ export const generateMetadata = async ({ params }) => {
 
   return { title: name, description: name };
 };
-
-import { MenuPageContainer } from "../../../content/menu-page/menu-page-container";
 
 export default MenuPageContainer;

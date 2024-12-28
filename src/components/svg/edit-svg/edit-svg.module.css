@@ -1,0 +1,7 @@
+.svg {
+  fill: #fff
+}
+
+.svg.light {
+  fill: var(--l-black);
+}
