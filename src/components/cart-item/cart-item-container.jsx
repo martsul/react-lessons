@@ -6,11 +6,28 @@ import {
   selectAmountItemsInCart,
 } from "../../redux/ui/cart/cart-slice";
 import { useDispatch, useSelector } from "react-redux";
-import { useGetDishByIdQuery } from "../../redux/services/api";
+import { getDishById } from "../../services/get-dish-by-id";
+import { useState } from "react";
+import { CartItemSkeleton } from "./cart-item-skeleton";
 
-export const CartItemContainer = ({ parameters }) => {
-  const { id } = parameters;
-  const { data, isLoading, isError } = useGetDishByIdQuery(id);
+function returnedPromise(callback, resolve) {
+  callback({
+    compleat: true,
+    data: resolve,
+  });
+}
+
+export const CartItemContainer = ({ id }) => {
+  const [dishIsReturned, useDishIsReturned] = useState({
+    compleat: false,
+    data: {},
+  });
+
+  if (!dishIsReturned.compleat) {
+    getDishById(id).then((resolve) => {
+      returnedPromise(useDishIsReturned, resolve);
+    });
+  }
 
   const quantity = useSelector((state) => selectAmountItemsInCart(state, id));
 
@@ -19,23 +36,15 @@ export const CartItemContainer = ({ parameters }) => {
   const decreaseValue = () => dispatch(decreaseItemsInCart(id));
   const deleteItem = () => dispatch(deleteItemsInCart(id));
 
-  if (isLoading) {
-    return "Loading";
+  if (!dishIsReturned.compleat) {
+    return <CartItemSkeleton />;
   }
 
-  if (isError) {
-    return "Error";
-  }
-
-  if (!data) {
-    return;
-  }
-
-  const { name, ingredients, price } = data;
+  const { name, ingredients, price } = dishIsReturned.data;
 
   return (
     <CartItem
-      parameters={{ ingredients, name, price, quantity }}
+      parameters={{ ingredients, name, price, quantity, id }}
       functions={{ increaseValue, decreaseValue, deleteItem }}
     />
   );

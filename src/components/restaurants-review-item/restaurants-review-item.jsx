@@ -5,6 +5,7 @@ import { useTheme } from "../theme-context/use-theme";
 import classNames from "classnames";
 import { useSign } from "../sign-context/use-sign";
 import { useEditReview } from "../edit-review-context/use-edit-review";
+import { EditSvg } from "../svg/edit-svg/edit-svg";
 
 export const RestaurantsReviewItem = ({ review, users }) => {
   const { id: reviewId, text, rating, userId } = review;
@@ -19,20 +20,22 @@ export const RestaurantsReviewItem = ({ review, users }) => {
     <li className={classNames(styles.item, { [styles.light]: isLightTheme })}>
       <div>
         {signIn && isReviewChanging && (
-          <button
+          <a
             onClick={() => {
               onChangeReview({
-                reviewId: reviewId,
-                text: text,
-                rating: rating,
+                reviewId,
+                text,
+                rating,
                 isEdit: true,
                 needСhangeParameters: true,
               });
             }}
             type="button"
+            className={styles.edit}
+            href="#form"
           >
-            Change
-          </button>
+            <EditSvg></EditSvg>
+          </a>
         )}
         <div>
           <h4 className={styles.name}>{userName}</h4>

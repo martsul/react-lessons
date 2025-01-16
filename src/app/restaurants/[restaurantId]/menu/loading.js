@@ -1,3 +1,3 @@
-export default function Loading() {
-  return <div>Loading</div>;
-}
+import { ListInfoSkeleton } from "../../../../components/list-info/list-info-skeleton";
+
+export default ListInfoSkeleton;

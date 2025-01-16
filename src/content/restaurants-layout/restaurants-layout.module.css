@@ -2,3 +2,44 @@
   margin: 0 auto;
   max-width: var(--small-container);
 }
+
+.skeletonTitle {
+  height: 45.6px;
+  width: 200px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+}
+
+.skeletonFilters {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+.skeletonFilter {
+  height: 21.6px;
+  width: 65px;
+  border-radius: 10px;
+}
+
+.skeletonSubtitle {
+  margin-bottom: 40px;
+  height: 38.4px;
+  width: 100px;
+  border-radius: 10px;
+}
+
+.skeletonList {
+  height: 258.4px;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 70px;
+}
+
+.animation {
+  animation: var(--skeleton-animation);
+}
+
+.light .animation {
+  animation: var(--l-skeleton-animation);
+}

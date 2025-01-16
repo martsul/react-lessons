@@ -45,3 +45,16 @@
 .light .price {
   color: var(--l-black);
 }
+
+.skeletonDish {
+  width: 100%;
+  height: 80px;
+  margin: 70px auto;
+  border-radius: 10px;
+  animation: var(--skeleton-animation);
+  max-width: var(--wide-container);
+}
+
+.skeletonDish.light {
+  animation: var(--l-skeleton-animation);
+}

@@ -12,4 +12,30 @@
   --l-orange-hov: #f97148;
   --l-border: #D7D7D7;
   --l-black: #363853;
+  --l-skeleton-animation: lightSkeletonLoading 1s linear infinite;
+  --skeleton-animation: SkeletonLoading 1s linear infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes SkeletonLoading {
+  from {
+    background: #ffffff33
+  }
+
+  to {
+    background-color: #ffffff00
+  }
+}
+
+@keyframes lightSkeletonLoading {
+  from {
+    background: #e4e3e3
+  }
+
+  to {
+    background-color: #b8b8b8
+  }
 }

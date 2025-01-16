@@ -1,13 +1,13 @@
 import styles from "./restaurants-layout.module.css";
-import { RestaurantsFiltersContainer } from "../../components/restaurants-filters/restaurants-filters-container";
-import { Suspense } from "react";
+import { getRestaurants } from "../../services/get-restaurants";
+import { RestaurantsFilters } from "../../components/restaurants-filters/restaurants-filters";
 
-export const RestaurantsLayout = ({ children }) => {
+export const RestaurantsLayout = async ({ children }) => {
+  const data = await getRestaurants();
+
   return (
     <>
-      <Suspense fallback={<div>Loading</div>}>
-        <RestaurantsFiltersContainer />
-      </Suspense>
+      <RestaurantsFilters data={data} />
       <section>
         <div className={styles.container}>{children}</div>
       </section>

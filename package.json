@@ -11,6 +11,7 @@
     "start-server": "node simple_api/server.js"
   },
   "dependencies": {
+    "@nextui-org/skeleton": "^2.2.4",
     "@reduxjs/toolkit": "^2.4.0",
     "classnames": "^2.5.1",
     "next": "^15.1.0",

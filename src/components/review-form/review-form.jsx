@@ -13,6 +13,7 @@ import { addReview } from "../../services/add-review";
 import { useParams } from "next/navigation";
 import { editReview } from "../../services/edit-review";
 import { getReviewsByRestaurantId } from "../../services/get-reviews-by-restaurant-id";
+import { CrossSvg } from "../svg/cross-svg";
 
 export const ReviewForm = ({ setReviews }) => {
   const {
@@ -44,15 +45,17 @@ export const ReviewForm = ({ setReviews }) => {
         if (resolve.ok) {
           getReviewsByRestaurantId(restaurantId).then((resolve) => {
             setReviews(resolve);
+            clearInputs();
+            onChangeReview({});
           });
         }
       });
-      onChangeReview({});
     } else {
       addReview(restaurantId, { text, rating, userId }).then((resolve) => {
         if (resolve.ok) {
           getReviewsByRestaurantId(restaurantId).then((resolve) => {
             setReviews(resolve);
+            clearInputs();
           });
         }
       });
@@ -62,11 +65,12 @@ export const ReviewForm = ({ setReviews }) => {
   const onCloseChanging = () => {
     onChangeReview({});
     setText("");
-    setRating("");
+    setRating(0);
   };
 
   return signIn ? (
     <form
+      id="form"
       className={classNames(styles.form, {
         [styles.light]: isLightTheme,
         [styles.changing]: canChanging,
@@ -78,7 +82,7 @@ export const ReviewForm = ({ setReviews }) => {
           className={styles.close}
           type="button"
         >
-          close
+          <CrossSvg fill={isLightTheme ? "#363853" : "#fff"}></CrossSvg>
         </button>
       )}
       <h3 className={styles.title}>Оставить отзыв</h3>
@@ -105,15 +109,17 @@ export const ReviewForm = ({ setReviews }) => {
             decreaseValue={decreaseValue}
           />
         </div>
-        <Button type={"button"} clickFunction={clearInputs} content={"Clear"} />
       </div>
-      <Button
-        type={"button"}
-        clickFunction={() => {
-          onSubmit({ text, rating });
-        }}
-        content={"Submit"}
-      ></Button>
+      <div className={styles.buttons}>
+        <Button type={"button"} clickFunction={clearInputs} content={"Clear"} />
+        <Button
+          type={"button"}
+          clickFunction={() => {
+            onSubmit({ text, rating });
+          }}
+          content={"Submit"}
+        ></Button>
+      </div>
     </form>
   ) : null;
 };

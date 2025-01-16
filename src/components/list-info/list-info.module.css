@@ -22,3 +22,33 @@
 .list.light {
   background: transparent;
 }
+
+.skeletonSubtitle {
+  margin-bottom: 40px;
+  height: 38.4px;
+  width: 100px;
+  border-radius: 10px;
+}
+
+.skeletonList {
+  height: 258.4px;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 70px;
+}
+
+.skeletonForm {
+  max-width: 800px;
+  width: 100%;
+  height: 297.6px;
+  margin: 0 auto 90px;
+  border-radius: 10px;
+}
+
+.animation {
+  animation: var(--skeleton-animation);
+}
+
+.light .animation {
+  animation: var(--l-skeleton-animation);
+}

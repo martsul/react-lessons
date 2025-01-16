@@ -3,6 +3,8 @@
 import styles from "./list-info.module.css";
 import { useTheme } from "../theme-context/use-theme";
 import classNames from "classnames";
+import { Suspense } from "react";
+import { ListInfoSkeleton } from "./list-info-skeleton";
 
 export const ListInfo = ({ title, children }) => {
   const { isLightTheme } = useTheme();
@@ -16,13 +18,15 @@ export const ListInfo = ({ title, children }) => {
       >
         {title}
       </h3>
-      <ul
-        className={classNames(styles.list, {
-          [styles.light]: isLightTheme,
-        })}
-      >
-        {children}
-      </ul>
+      <Suspense fallback={<ListInfoSkeleton />}>
+        <ul
+          className={classNames(styles.list, {
+            [styles.light]: isLightTheme,
+          })}
+        >
+          {children}
+        </ul>
+      </Suspense>
     </>
   );
 };
